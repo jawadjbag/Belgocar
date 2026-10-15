@@ -135,6 +135,74 @@
 }
 @media(prefers-reduced-motion:reduce){.brands-track{animation:none}.brands-window{overflow-x:auto;mask-image:none}}
 
+
+/* V4.2 — Demande de rendez-vous, accessibilité routière, assistant virtuel */
+.atelier-cta-overlay{position:absolute;inset:0;z-index:2;cursor:pointer}
+.booking{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.16fr);gap:20px;align-items:center;padding:24px;background:#151b23;color:#fff;border-radius:20px;box-shadow:var(--shadow)}
+.booking-intro{padding:12px 22px}
+.booking-kicker{font-size:10px;letter-spacing:.14em;font-weight:800;color:#ff6069}
+.booking-intro h2{font-size:clamp(27px,2.35vw,39px);line-height:1.12;letter-spacing:-.045em;margin:13px 0 15px;font-weight:900}
+.booking-intro h2 span{color:#ff535b}
+.booking-intro p{font-size:13px;line-height:1.75;color:#d2d7df;max-width:490px}
+.booking-proof{display:flex;flex-wrap:wrap;gap:13px 18px;margin-top:22px;font-size:11px;font-weight:700;color:#f5f6f7}
+.booking-contact{margin-top:24px;color:#aeb6c1;font-size:12px}
+.booking-contact a{color:#fff;text-decoration:underline;text-underline-offset:4px;font-weight:800}
+.booking-details{background:#fff;border-radius:15px;color:#111820;min-width:0}
+.booking-summary{list-style:none;display:flex;align-items:center;gap:15px;cursor:pointer;padding:21px;min-height:95px}
+.booking-summary::-webkit-details-marker{display:none}
+.booking-summary-icon{display:grid;place-items:center;border-radius:13px;width:44px;height:44px;color:#fff;background:var(--red2);font-size:22px;flex:none}
+.booking-summary strong{display:block;font-size:16px;font-weight:900;line-height:1.3}
+.booking-summary small{display:block;color:#747c86;font-size:11px;margin-top:4px;line-height:1.5}
+.booking-summary-caret{margin-left:auto;font-size:25px;transition:transform .2s}
+.booking-details[open] .booking-summary-caret{transform:rotate(180deg)}
+.booking-form{padding:0 20px 20px;border-top:1px solid #eff0f2}
+.booking-purposes{border:0;padding:14px 0 5px;margin:0;display:flex;flex-wrap:wrap;gap:7px}
+.booking-purposes legend{font-size:12px;font-weight:800;padding-top:15px;padding-bottom:9px}
+.booking-purposes label{cursor:pointer}
+.booking-purposes input{position:absolute;opacity:0;width:1px;height:1px}
+.booking-purposes label span{display:block;border:1px solid #e3e6eb;border-radius:100px;padding:8px 12px;font-size:10.5px;font-weight:700;color:#4b5563}
+.booking-purposes input:checked+span{background:#fff1f2;border-color:#ec2632;color:#d51422}
+.booking-purposes input:focus-visible+span{outline:2px solid var(--red2);outline-offset:2px}
+.booking-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 12px;margin-top:15px}
+.booking-fields label{font-size:11px;font-weight:800;line-height:1.4;color:#394150}
+.booking-fields input,.booking-fields select,.booking-fields textarea{font-size:12px;font-weight:500;display:block;width:100%;border:1px solid #e3e7eb;border-radius:10px;background:#fbfcfd;color:#18212b;outline:none;padding:11px 12px;margin-top:6px;min-height:43px}
+.booking-fields textarea{resize:vertical;min-height:70px}
+.booking-fields input:focus,.booking-fields select:focus,.booking-fields textarea:focus{border-color:#ed2933;box-shadow:0 0 0 3px #ffeded}
+.booking-wide{grid-column:1/-1}
+.booking-submit{width:100%;min-height:46px;margin-top:14px;cursor:pointer}
+.booking-disclaimer{font-size:10px;line-height:1.55;color:#79818c;margin-top:9px}
+.access-bar{display:flex;align-items:center;gap:17px;border-radius:16px;background:#fff;border:1px solid #e9ecf0;padding:17px 22px;box-shadow:var(--shadow)}
+.access-icon{font-size:34px;font-weight:400;color:var(--red2);line-height:1;flex:none}
+.access-content{min-width:0;flex:1}.access-content strong{display:block;font-size:13px;line-height:1.3;font-weight:900}.access-content span{display:block;font-size:11px;line-height:1.6;margin-top:4px;color:#6d7682}
+.access-roads{display:flex;gap:6px;flex:none}.access-roads span{font-size:11px;font-weight:900;color:#333b46;background:#f4f5f6;border:1px solid #e6e9ed;border-radius:6px;padding:7px 9px}
+.access-link{flex:none;display:inline-flex;align-items:center;justify-content:center;padding:10px 17px;border-radius:999px;background:#ffeff0;color:#dc1523;font-size:11px;font-weight:900;white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.assistant-widget{position:fixed;right:24px;bottom:22px;z-index:110;font-family:Inter,Arial,sans-serif}
+.assistant-launcher{border:0;background:transparent;display:flex;align-items:center;gap:8px;cursor:pointer;padding:0}
+.assistant-nudge{background:#fff;padding:10px 15px;border-radius:22px;border:1px solid #eceef2;box-shadow:0 7px 24px #11182028;font-size:12px;font-weight:800;color:#111820}
+.assistant-avatar{display:block;width:65px;height:65px;border-radius:50%;border:3px solid #fff;overflow:hidden;box-shadow:0 9px 30px #10182038;background:#f5f5f5}
+.assistant-avatar img{width:100%;height:100%;object-fit:cover}
+.assistant-launcher-dot{position:absolute;bottom:2px;right:0;width:23px;height:23px;display:grid;place-items:center;border-radius:50%;background:var(--red2);color:#fff;font-weight:900;font-size:13px;border:2px solid #fff}
+.assistant-panel{position:absolute;right:0;bottom:80px;width:min(365px,calc(100vw - 28px));max-height:min(525px,calc(100dvh - 130px));background:#fff;border:1px solid #e5e8ee;border-radius:18px;overflow:hidden;box-shadow:0 14px 52px #10182238;display:flex;flex-direction:column}
+.assistant-panel[hidden]{display:none}
+.assistant-header{display:flex;gap:12px;align-items:center;background:#161d27;color:#fff;padding:13px 16px;flex:none}
+.assistant-face{width:43px;height:43px;object-fit:cover;border-radius:50%;border:2px solid white}
+.assistant-header div{min-width:0;flex:1}.assistant-header strong{display:block;font-size:13px;font-weight:900}.assistant-header span{font-size:10px;color:#bec8d2;display:block;margin-top:4px}
+.assistant-header button{background:#ffffff20;border:0;border-radius:50%;width:30px;height:30px;color:#fff;font-size:21px;cursor:pointer}
+.assistant-messages{padding:16px;min-height:130px;overflow-y:auto;flex:1;background:#f7f8fa;display:flex;flex-direction:column;gap:11px}
+.assistant-bubble{font-size:12px;line-height:1.55;padding:11px 13px;border-radius:14px;max-width:90%;white-space:pre-wrap;overflow-wrap:anywhere}
+.assistant-bot{background:#fff;color:#212731;border:1px solid #eaedf0;align-self:flex-start;border-bottom-left-radius:4px}
+.assistant-user{background:#ee1c25;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.assistant-bubble a{display:inline-block;margin-top:7px;color:#dc1523;font-weight:900;text-decoration:underline;text-underline-offset:2px}
+.assistant-quick{padding:10px 12px 3px;display:flex;gap:6px;flex-wrap:wrap;flex:none;background:#fff}
+.assistant-quick button{border:1px solid #e5e7eb;border-radius:999px;background:#fff;color:#333b46;padding:7px 10px;font-size:10px;font-weight:800;cursor:pointer}
+.assistant-quick button:hover{border-color:#e81f2a;color:#e81f2a}
+.assistant-input{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff}
+.assistant-input input{flex:1;min-width:0;border:1px solid #e2e6eb;background:#fafbfc;padding:10px 12px;border-radius:999px;outline:none;font-size:12px}
+.assistant-input button{display:grid;place-items:center;width:37px;height:37px;flex:none;border:0;border-radius:50%;background:#ed1e29;color:#fff;cursor:pointer;font-size:15px}
+.assistant-disclaimer{font-size:9px;color:#8a929d;background:#fff;text-align:center;padding:0 10px 10px}
+@media(max-width:900px){.booking{grid-template-columns:1fr;padding:18px}.booking-intro{padding:8px 5px}.booking-intro h2{font-size:29px}.booking-proof,.booking-contact{margin-top:13px}.access-bar{flex-wrap:wrap}.access-content{flex-basis:calc(100% - 68px)}.access-link{margin-left:auto}}
+@media(max-width:560px){.booking{gap:14px;padding:15px;border-radius:16px}.booking-intro h2{font-size:26px;margin:9px 0 10px}.booking-intro p{font-size:11.5px;line-height:1.5}.booking-proof{font-size:10px;gap:8px}.booking-contact{font-size:11px}.booking-summary{min-height:73px;padding:12px}.booking-summary-icon{width:36px;height:36px;font-size:18px}.booking-summary strong{font-size:13px}.booking-summary small{font-size:9px}.booking-form{padding:0 12px 14px}.booking-fields{grid-template-columns:1fr 1fr;gap:10px}.booking-purposes label span{font-size:10px;padding:7px 10px}.access-bar{gap:10px;padding:13px 14px}.access-content strong{font-size:11.5px}.access-content span{font-size:10px}.access-icon{font-size:25px}.access-roads{margin-left:32px}.access-link{padding:8px 12px;font-size:10px}.assistant-widget{right:13px;bottom:78px}.assistant-avatar{width:54px;height:54px}.assistant-nudge{font-size:10px;padding:8px 11px}.assistant-panel{bottom:66px;width:calc(100vw - 26px);max-height:min(460px,calc(100dvh - 174px))}}
 </style>
 <style>.example-note{display:block;font-size:11px;line-height:1.5;color:#8c919b;margin-top:15px}.review-source-link{display:inline-block;color:#ef1e26;font-weight:700;font-size:12px;margin-top:7px}</style></head>
 <body>
@@ -145,22 +213,22 @@
       <a class="active" href="#accueil">Accueil</a>
       <a href="#vehicules">Nos véhicules</a>
       <a href="#apropos">Notre expertise</a>
-      <a href="#apropos">À propos</a>
+      <a href="#atelier-rdv">RDV atelier</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="top-actions">
       <a class="top-phone" href="tel:+32470934501"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.46.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.19.19 2.35.55 3.46a1 1 0 0 1-.24 1z"/></svg>0470 93 45 01</a>
-      <a class="btn small" href="#contact">Rendez-vous <span class="arrow">→</span></a>
+      <a class="btn small" href="#atelier-rdv">Rendez-vous <span class="arrow">→</span></a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
     </div>
   </div>
   <nav class="mobile-nav wrap" id="mobileNav">
     <a href="#accueil">Accueil <span>→</span></a>
     <a href="#vehicules">Nos véhicules <span>→</span></a>
-    <a href="#apropos">Nos services <span>→</span></a>
-    <a href="#apropos">À propos <span>→</span></a>
+    <a href="#apropos">Notre expertise <span>→</span></a>
+    <a href="#atelier-rdv">RDV atelier <span>→</span></a>
     <a href="#contact">Contact <span>→</span></a>
-    <a class="btn small" href="#contact">Rendez-vous →</a>
+    <a class="btn small" href="#atelier-rdv">Rendez-vous atelier →</a>
   </nav>
 </header>
 <main class="section" id="accueil">
@@ -173,7 +241,7 @@
           <p>Vente de véhicules de qualité, entretien, réparation et un accompagnement personnalisé. Chez Belgocar, vous profitez d'un service professionnel et d'une relation de confiance, sans compromis.</p>
           <div class="hero-btns">
             <a class="btn" href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir nos véhicules <span class="arrow">→</span></a>
-            <a class="btn light" href="#contact">Prendre rendez-vous <span class="arrow">→</span></a>
+            <a class="btn light" href="#atelier-rdv">Prendre rendez-vous <span class="arrow">→</span></a>
           </div>
         </div>
         <div class="hero-visual" aria-label="Façade Belgocar avec SUV devant le showroom"></div>
@@ -234,7 +302,7 @@
 
     <section class="mid-grid section-space" id="apropos">
       <article class="atelier-box">
-        <img src="assets/v4-atelier.webp" alt="L’atelier de Belgocar, une expertise automobile" loading="lazy">
+        <img src="assets/v4-atelier.webp" alt="L’atelier de Belgocar, une expertise automobile" loading="lazy"><a href="#atelier-rdv" class="atelier-cta-overlay" aria-label="Prendre rendez-vous à l’atelier"></a>
       </article>
       <aside class="why-box" id="expertise">
   <div class="why-kicker">BELGOCAR · LE SAVOIR-FAIRE</div>
@@ -248,7 +316,52 @@
 </aside>
     </section>
 
-    <section class="reviews section-space" id="avis">
+    
+<section class="booking section-space" id="atelier-rdv" aria-labelledby="booking-title">
+  <div class="booking-intro">
+    <div class="booking-kicker">L'ATELIER BELGOCAR · ENTRETIEN & MÉCANIQUE</div>
+    <h2 id="booking-title">On s'occupe de votre voiture.<br><span>Vous gardez l'esprit tranquille.</span></h2>
+    <p>Une révision à prévoir, un bruit à vérifier ou une intervention à organiser ? Décrivez-nous votre besoin et notre équipe revient vers vous pour convenir d'un rendez-vous.</p>
+    <div class="booking-proof"><span>✓ Demande sans engagement</span><span>✓ Réponse personnalisée</span></div>
+    <div class="booking-contact"><span>Vous préférez en parler ?</span> <a href="tel:+32470934501">0470 93 45 01 ↗</a></div>
+  </div>
+  <details class="booking-details" id="bookingDetails">
+    <summary class="booking-summary">
+      <span class="booking-summary-icon">↗</span>
+      <span><strong>Planifier mon passage à l'atelier</strong><small>Entretien, diagnostic, mécanique ou carrosserie</small></span>
+      <span class="booking-summary-caret" aria-hidden="true">⌄</span>
+    </summary>
+    <form class="booking-form" id="bookingForm">
+      <fieldset class="booking-purposes">
+        <legend>De quoi avez-vous besoin ?</legend>
+        <label><input type="radio" name="motif" value="Entretien / révision" checked required><span>Entretien / révision</span></label>
+        <label><input type="radio" name="motif" value="Diagnostic"><span>Diagnostic</span></label>
+        <label><input type="radio" name="motif" value="Réparation mécanique"><span>Mécanique</span></label>
+        <label><input type="radio" name="motif" value="Carrosserie"><span>Carrosserie</span></label>
+        <label><input type="radio" name="motif" value="Autre demande"><span>Autre</span></label>
+      </fieldset>
+      <div class="booking-fields">
+        <label>Votre nom *<input name="nom" placeholder="Nom et prénom" autocomplete="name" required maxlength="100"></label>
+        <label>Téléphone *<input name="telephone" type="tel" placeholder="04XX XX XX XX" autocomplete="tel" required maxlength="30"></label>
+        <label>Votre email *<input name="email" type="email" placeholder="vous@exemple.be" autocomplete="email" required maxlength="150"></label>
+        <label>Votre véhicule <input name="vehicule" placeholder="Ex. BMW Série 3 · 2021" maxlength="100"></label>
+        <label>Date souhaitée <input name="date" id="bookingDate" type="date"></label>
+        <label>Votre disponibilité <select name="moment"><option value="Flexible">Flexible</option><option value="Matin">Le matin</option><option value="Après-midi">L'après-midi</option></select></label>
+        <label class="booking-wide">Un mot pour l'équipe <textarea name="description" rows="2" maxlength="1200" placeholder="Un voyant allumé, une révision à programmer, un bruit inhabituel…"></textarea></label>
+      </div>
+      <button class="btn booking-submit" type="submit">Préparer ma demande <span class="arrow" aria-hidden="true">→</span></button>
+      <p class="booking-disclaimer" id="bookingFeedback" role="status">Votre messagerie s'ouvrira avec votre demande préremplie. Envoyez l'email pour la transmettre ; le rendez-vous sera confirmé par l'équipe.</p>
+    </form>
+  </details>
+</section>
+
+<section class="access-bar section-space" aria-label="Venir chez Belgocar">
+  <div class="access-icon" aria-hidden="true">⌖</div>
+  <div class="access-content"><strong>Facile d'accès depuis Bruxelles et Zaventem</strong><span>Leuvensesteenweg 246, 1932 Zaventem · À proximité du Ring R0 et de l'E40</span></div>
+  <div class="access-roads"><span>R0</span><span>E40</span></div>
+  <a class="access-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leuvensesteenweg%20246%2C%201932%20Zaventem%2C%20Belgium" target="_blank" rel="noopener noreferrer">Itinéraire ↗</a>
+</section>
+<section class="reviews section-space" id="avis">
       <div class="reviews-title">
         <div class="eyebrow">Nos clients</div>
         <h2>En parlent le mieux</h2>
@@ -285,7 +398,7 @@
           <div class="contact-info">
             <span><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.46.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.19.19 2.35.55 3.46a1 1 0 0 1-.24 1z"/></svg>0470 93 45 01</span>
             <span><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 7l8 6 8-6"/></svg>info@belgocar.be</span>
-            <span><svg viewBox="0 0 24 24"><path d="M12 21s7-5.33 7-11a7 7 0 0 0-14 0c0 5.67 7 11 7 11zm0-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>Adresse à confirmer</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 21s7-5.33 7-11a7 7 0 0 0-14 0c0 5.67 7 11 7 11zm0-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>Leuvensesteenweg 246, 1932 Zaventem</span>
           </div>
         </div>
         <a class="btn" href="mailto:info@belgocar.be?subject=Demande%20depuis%20le%20site%20Belgocar">Nous contacter <span class="arrow">→</span></a>
@@ -300,6 +413,21 @@
   </div>
 </footer>
 <div class="mobile-actions"><a href="tel:+32470934501">Appeler</a><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir les voitures</a></div>
+
+<div class="assistant-widget" id="assistantWidget">
+  <section class="assistant-panel" id="assistantPanel" aria-label="Assistant virtuel Belgocar" hidden>
+    <div class="assistant-header"><img class="assistant-face" src="assets/v4-chat-avatar.webp" alt="Avatar fictif de l'assistant"><div><strong>Votre assistant Belgocar</strong><span>Assistant virtuel · réponses rapides</span></div><button id="assistantClose" type="button" aria-label="Fermer la discussion">×</button></div>
+    <div class="assistant-messages" id="assistantMessages" role="log" aria-live="polite"><div class="assistant-bubble assistant-bot">Bonjour 👋 Besoin d'un rendez-vous à l'atelier, d'un itinéraire ou d'un renseignement sur nos voitures ? Je peux vous orienter.</div></div>
+    <div class="assistant-quick" id="assistantQuick" aria-label="Questions fréquentes">
+      <button type="button" data-query="rdv">Prendre RDV</button><button type="button" data-query="adresse">Nous trouver</button><button type="button" data-query="stock">Nos voitures</button><button type="button" data-query="contact">Parler à l'équipe</button>
+    </div>
+    <form class="assistant-input" id="assistantInput"><label for="assistantText" class="sr-only">Votre question</label><input id="assistantText" autocomplete="off" maxlength="240" placeholder="Posez votre question…" required><button type="submit" aria-label="Envoyer la question">➤</button></form>
+    <div class="assistant-disclaimer">Assistant de démonstration · réponses automatiques. Avatar provisoire.</div>
+  </section>
+  <button class="assistant-launcher" id="assistantToggle" type="button" aria-label="Ouvrir le chat Belgocar" aria-expanded="false" aria-controls="assistantPanel">
+    <span class="assistant-nudge">Une question ?</span><span class="assistant-avatar"><img src="assets/v4-chat-avatar.webp" alt=""></span><span class="assistant-launcher-dot" aria-hidden="true">?</span>
+  </button>
+</div>
 <script>
 const btn=document.getElementById('menuBtn');
 const nav=document.getElementById('mobileNav');
@@ -322,6 +450,68 @@ function showReview(step){
 }
 document.getElementById("reviewPrev")?.addEventListener("click",()=>showReview(-1));
 document.getElementById("reviewNext")?.addEventListener("click",()=>showReview(1));
+
+/* Rendez-vous : email préparé côté navigateur, aucune réservation non confirmée. */
+const bookingDetails=document.getElementById("bookingDetails");
+const bookingForm=document.getElementById("bookingForm");
+const bookingDate=document.getElementById("bookingDate");
+if(bookingDate){const now=new Date(), local=new Date(now.getTime()-now.getTimezoneOffset()*60000);bookingDate.min=local.toISOString().slice(0,10);}
+function revealBooking(){
+  if(bookingDetails)bookingDetails.open=true;
+  document.getElementById("atelier-rdv")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.querySelectorAll('a[href="#atelier-rdv"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();history.replaceState(null,"","#atelier-rdv");revealBooking();}));
+if(location.hash==="#atelier-rdv"){bookingDetails.open=true;}
+bookingForm?.addEventListener("submit",e=>{
+  e.preventDefault();if(!bookingForm.reportValidity())return;
+  const d=new FormData(bookingForm);
+  const message=["Bonjour l’équipe Belgocar,","","Je souhaite organiser un passage à l’atelier.","",
+    "Type de demande : "+d.get("motif"),
+    "Nom : "+d.get("nom"),
+    "Téléphone : "+d.get("telephone"),
+    "Email : "+d.get("email"),
+    "Véhicule : "+(d.get("vehicule")||"À préciser"),
+    "Date souhaitée : "+(d.get("date")||"À convenir"),
+    "Moment : "+d.get("moment"),
+    "Description : "+(d.get("description")||"Aucun détail supplémentaire"),
+    "","Pouvez-vous me recontacter pour confirmer la disponibilité ?","Merci."].join("\n");
+  const link="mailto:info@belgocar.be?subject="+encodeURIComponent("Demande de rendez-vous atelier — "+d.get("nom"))+"&body="+encodeURIComponent(message);
+  document.getElementById("bookingFeedback").textContent="Votre messagerie va s'ouvrir. Envoyez le message pour transmettre la demande ; le rendez-vous n'est pas encore confirmé.";
+  window.location.href=link;
+});
+/* Chat de démonstration purement local, sans backend et sans fausse disponibilité humaine. */
+const panel=document.getElementById("assistantPanel");
+const toggle=document.getElementById("assistantToggle");
+const closeChat=document.getElementById("assistantClose");
+const log=document.getElementById("assistantMessages");
+function setChat(open){panel.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.setAttribute("aria-label",open?"Fermer le chat Belgocar":"Ouvrir le chat Belgocar");if(open)document.getElementById("assistantText").focus();}
+toggle?.addEventListener("click",()=>setChat(panel.hidden));
+closeChat?.addEventListener("click",()=>setChat(false));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)setChat(false)});
+function bubble(text,type="bot",linkText,linkHref){
+ const item=document.createElement("div");item.className="assistant-bubble assistant-"+type;item.textContent=text;
+ if(linkText&&linkHref){const a=document.createElement("a");a.textContent=linkText;a.href=linkHref;if(linkHref.startsWith("https")){a.target="_blank";a.rel="noopener noreferrer";}item.appendChild(document.createElement("br"));item.appendChild(a);}
+ log.appendChild(item);log.scrollTop=log.scrollHeight;
+}
+const mapsUrl="https://www.google.com/maps/dir/?api=1&destination=Leuvensesteenweg%20246%2C%201932%20Zaventem%2C%20Belgium";
+function answerChat(input){
+ const q=String(input).trim().toLowerCase();if(!q)return;
+ bubble(input,"user");
+ if(/rdv|rendez|entretien|atelier|mécan|repar|répar|diagnos|carrosserie|revision|révision/.test(q))
+   bubble("Préparez votre demande pour l'atelier en moins d'une minute. Notre équipe vous recontactera pour fixer le créneau.","bot","Ouvrir le formulaire ↗","#atelier-rdv");
+ else if(/adresse|localis|trouver|venir|route|itin|e40|ring|zaventem|accès|acces/.test(q))
+   bubble("Retrouvez-nous au Leuvensesteenweg 246, 1932 Zaventem, près du Ring R0 et de l'E40.","bot","Lancer l'itinéraire ↗",mapsUrl);
+ else if(/voitur|stock|véhicul|vehicul|acheter|prix|bmw|audi|occasion/.test(q))
+   bubble("Les voitures disponibles et leurs tarifs actualisés sont sur notre vitrine AutoScout24.","bot","Voir les véhicules ↗","https://www.autoscout24.be/fr/professional/belgocar");
+ else if(/telephone|téléphone|appeler|contact|email|mail|humain|personne|equipe|équipe/.test(q))
+   bubble("Pour parler directement à notre équipe, appelez le 0470 93 45 01 ou écrivez à info@belgocar.be.","bot","Envoyer un email ↗","mailto:info@belgocar.be");
+ else if(/horaire|ouvert|fermeture|heure|jour/.test(q))
+   bubble("Pour confirmer nos horaires ou la disponibilité de l'atelier, contactez directement notre équipe au 0470 93 45 01.","bot","Appeler Belgocar ↗","tel:+32470934501");
+ else bubble("Je peux vous aider à prendre rendez-vous, à trouver Belgocar ou à voir nos voitures. Pour une question plus précise, notre équipe est joignable directement.","bot","Contacter l'équipe ↗","mailto:info@belgocar.be");
+}
+document.querySelectorAll("#assistantQuick button").forEach(b=>b.addEventListener("click",()=>{const v=b.dataset.query;const names={rdv:"Prendre rendez-vous",adresse:"Comment venir ?",stock:"Voir les voitures",contact:"Parler à l'équipe"};answerChat(names[v]||v);}));
+document.getElementById("assistantInput")?.addEventListener("submit",e=>{e.preventDefault();const input=document.getElementById("assistantText");if(!input.value.trim())return;answerChat(input.value);input.value="";input.focus();});
+document.addEventListener("click",e=>{if(e.target.closest(".assistant-bubble a[href='#atelier-rdv']")){setChat(false);revealBooking();}});
 </script>
 </body>
 </html>
