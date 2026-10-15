@@ -1,386 +1,516 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="Belgocar, votre partenaire automobile à Zaventem. Vente de véhicules, entretien, carrosserie et accompagnement personnalisé. Le confort d'une concession, les prix d'un indépendant.">
-  <title>Belgocar — Le confort d'une concession. Les prix d'un indépendant.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-  :root{--ink:#17191c;--muted:#667079;--red:#e0192b;--red-dark:#b60f22;--line:#e7e8e9;--off:#f5f5f4;--white:#fff;--font:"DM Sans",Arial,sans-serif;--display:"Manrope",Arial,sans-serif;--max:1320px}
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:84px}
-  body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.55 var(--font);-webkit-font-smoothing:antialiased}
-  button,input,textarea,select{font:inherit}button{cursor:pointer}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
-  ::selection{background:#fbd6db;color:#1b1b1d}
-  :focus-visible{outline:3px solid #e0192b;outline-offset:4px}
-  .skip{position:absolute;top:-80px;left:10px;background:#fff;padding:12px;z-index:100}
-  .skip:focus{top:10px}
-  .shell{max-width:var(--max);margin:auto;padding:0 clamp(22px,4vw,64px)}
-  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--red)}
-  .eyebrow.light{color:#f3c5c9}
-  .eyebrow .dash{display:inline-block;width:19px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}
-  h1,h2,h3,p{margin:0}
-  h1,h2,h3{font-family:var(--display)}
-  .section-title{font-weight:700;font-size:clamp(36px,4.4vw,64px);letter-spacing:-.057em;line-height:1.11}
-  .section-intro{color:var(--muted);max-width:420px;font-size:15px;line-height:1.75}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:0 22px;background:var(--ink);color:#fff;border:1px solid var(--ink);font-size:13px;font-weight:700;letter-spacing:-.005em;transition:background .2s,border-color .2s,color .2s,transform .2s}
-  .btn:hover{transform:translateY(-2px);background:#303337}
-  .btn svg,.text-link svg{width:17px;height:17px;flex:none;transition:transform .2s}
-  .btn:hover svg,.text-link:hover svg{transform:translate(3px,-3px)}
-  .btn-red{background:var(--red);border-color:var(--red)}
-  .btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
-  .btn-plain{background:#fff;color:var(--ink);border-color:#ddd}
-  .btn-plain:hover{background:var(--off);border-color:#c7cbd0}
-  .text-link{display:inline-flex;gap:12px;align-items:center;font-size:13px;font-weight:700;border-bottom:1px solid currentColor;padding-bottom:5px}
-  .arrow-svg{display:inline-block;vertical-align:middle}
-  /* Header */
-  .header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:70}
-  .header-inner{height:83px;display:flex;align-items:center;gap:34px;justify-content:space-between}
-  .brand{display:flex;align-items:center;flex-shrink:0}
-  .brand img{width:166px;height:auto;max-height:49px;object-fit:contain}
-  .header-nav{display:flex;align-items:center;gap:clamp(20px,2.8vw,43px)}
-  .header-nav a{font-size:12px;font-weight:700;color:#40444a;transition:color .2s}
-  .header-nav a:hover{color:var(--red)}
-  .header-actions{display:flex;align-items:center;gap:18px}
-  .header-phone{white-space:nowrap;font-size:12px;font-weight:700}
-  .header .btn{min-height:44px;font-size:12px;padding:0 17px}
-  .menu-trigger{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid #dedfe1;background:white;color:var(--ink);padding:0}
-  .menu-trigger svg{width:23px;height:23px}
-  .menu-panel{display:none}
-  /* Hero */
-  .hero{display:grid;grid-template-columns:minmax(0,49%) minmax(0,51%);min-height:660px;overflow:hidden;background:#fafafa}
-  .hero-copy{align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:75px 42px 82px max(32px,calc((100vw - 1194px)/2));position:relative}
-  .hero h1{max-width:680px;margin:23px 0 24px;font-weight:700;font-size:clamp(49px,4.7vw,81px);letter-spacing:-.069em;line-height:1.07}
-  .hero h1 span{color:var(--red);display:block}
-  .hero p{max-width:455px;color:#63676d;font-size:15px;line-height:1.75}
-  .hero-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-top:34px}
-  .hero .micro{font-size:11px;margin-top:31px;color:#7b7f85;letter-spacing:.01em}
-  .hero-photo{position:relative;min-width:0;overflow:hidden;min-height:620px;background:#333}
-  .hero-photo img{height:100%;width:100%;object-fit:cover;object-position:center;position:absolute;inset:0}
-  .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.44) 0%,transparent 31%)}
-  .photo-label{position:absolute;left:35px;bottom:29px;z-index:2;color:#fff;display:flex;align-items:center;gap:11px;font-size:11px;font-weight:600}
-  .photo-label .circle{height:8px;width:8px;border-radius:50%;background:#fff}
-  .hero-index{position:absolute;right:28px;top:26px;color:#fff;opacity:.9;font-size:10px;letter-spacing:.17em;font-weight:700;z-index:2}
-  /* Trust */
-  .trustline{border-bottom:1px solid var(--line);background:#fff}
-  .trustline .shell{display:flex;min-height:104px;align-items:center;justify-content:space-between;gap:24px}
-  .trust-item{display:flex;align-items:center;gap:16px;flex:1;padding:20px 0}
-  .trust-item+.trust-item{border-left:1px solid var(--line);padding-left:30px}
-  .trust-icon{font:700 23px/1 var(--display);letter-spacing:-.04em;color:var(--red);white-space:nowrap}
-  .trust-item strong{font-size:12px;display:block}
-  .trust-item span{font-size:11px;color:#7a7d81}
-  /* Sections */
-  section{scroll-margin-top:82px}
-  .section-space{padding:115px 0}
-  .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:56px}
-  .section-head h2{margin-top:18px}
-  /* Services */
-  .services{background:#fff}
-  .services-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:72px}
-  .service{display:flex;align-items:flex-start;gap:22px;border-top:1px solid #d9dcdf;padding:28px 0 32px;min-height:157px}
-  .service-index{font-size:12px;color:var(--red);font-weight:700;line-height:1.9}
-  .service-content{flex:1}
-  .service h3{font-size:21px;font-weight:700;letter-spacing:-.042em;margin-bottom:8px}
-  .service p{font-size:13px;color:var(--muted);line-height:1.65;max-width:350px}
-  .service-glyph{width:19px;height:19px;color:#8a8c8d}
-  /* Reviews */
-  .reviews{background:#f5f5f3}
-  .reviews-top{display:flex;gap:30px;justify-content:space-between;align-items:end;margin-bottom:45px}
-  .reviews h2{max-width:690px;margin-top:17px}
-  .google-mark{white-space:nowrap;display:flex;align-items:center;gap:11px;color:#666;font-size:12px;font-weight:600}
-  .google-g{font-size:30px;line-height:1;font-weight:700;font-family:Arial,sans-serif;color:#4285f4}
-  .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .review{background:#fff;min-height:316px;padding:36px 38px 31px;display:flex;flex-direction:column}
-  .review .stars{font-size:17px;letter-spacing:2px;color:#e6a900}
-  .review blockquote{margin:29px 0 34px;font-size:clamp(16px,1.45vw,20px);font-family:var(--display);font-weight:600;letter-spacing:-.033em;line-height:1.5;flex:1}
-  .review-author{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #ededed;padding-top:20px}
-  .review-author strong{font-size:13px}
-  .review-author span{font-size:11px;color:#8c9094}
-  .reviews-foot{margin-top:29px;display:flex;justify-content:space-between;gap:16px;align-items:center}
-  .reviews-foot small{color:#898b8d;font-size:11px}
-  /* Workshop */
-  .atelier{padding:0;background:var(--ink);color:#fff;display:grid;grid-template-columns:1fr 1fr;min-height:590px}
-  .atelier-photo{position:relative;overflow:hidden;min-height:590px}
-  .atelier-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .atelier-copy{padding:85px max(25px,calc((100vw - 1200px)/2)) 80px 8vw;display:flex;justify-content:center;flex-direction:column}
-  .atelier h2{font-size:clamp(38px,4vw,60px);font-weight:700;line-height:1.13;letter-spacing:-.055em;margin:18px 0 26px;max-width:590px}
-  .atelier p{color:#c4c8cc;line-height:1.75;max-width:430px;font-size:14px}
-  .atelier .btn{align-self:flex-start;margin-top:33px;background:#fff;color:#17191c;border-color:#fff}
-  .atelier .btn:hover{background:#ececed}
-  /* Vehicles */
-  .vehicles{background:#fff}
-  .vehicle-layout{display:grid;grid-template-columns:.42fr .58fr;gap:clamp(34px,5.5vw,85px);align-items:center}
-  .vehicle-copy h2{margin:18px 0 20px}
-  .vehicle-copy p{font-size:15px;line-height:1.75;color:var(--muted);max-width:380px}
-  .vehicle-copy .btn{margin-top:30px}
-  .vehicle-copy .tiny{display:block;margin-top:14px;font-size:11px;color:#8a8c90}
-  .vehicle-media{position:relative;aspect-ratio:1.25;overflow:hidden;background:#ececec}
-  .vehicle-media img{width:100%;height:100%;object-fit:cover}
-  .vehicle-media-note{position:absolute;bottom:18px;left:20px;background:#fff;padding:11px 14px;font-size:11px;font-weight:700}
-  /* Manifesto */
-  .promise{border-top:1px solid var(--line);background:#fff}
-  .promise-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
-  .promise h2{margin-top:18px;max-width:520px}
-  .promise-items{border-top:1px solid var(--line)}
-  .promise-item{display:grid;grid-template-columns:50px 1fr;gap:18px;padding:23px 0;border-bottom:1px solid var(--line)}
-  .promise-item>span{font-size:12px;color:var(--red);font-weight:700}
-  .promise-item h3{font-weight:700;font-size:17px;letter-spacing:-.03em;margin-bottom:6px}
-  .promise-item p{color:var(--muted);font-size:13px;line-height:1.7}
-  /* CTA & footer */
-  .contact{background:var(--red);color:#fff;padding:86px 0}
-  .contact-layout{display:flex;align-items:center;justify-content:space-between;gap:35px}
-  .contact h2{font-size:clamp(36px,4vw,60px);letter-spacing:-.05em;line-height:1.15;max-width:700px;margin-top:15px}
-  .contact p{color:#ffe5e8;font-size:14px;margin-top:16px}
-  .contact .btn{background:#fff;color:var(--ink);border-color:#fff;white-space:nowrap}
-  .contact .btn:hover{background:#f1f1f1}
-  .footer{background:#141619;color:#d6d8d9;padding:65px 0 24px}
-  .footer-inner{display:grid;grid-template-columns:1.25fr .65fr .8fr;gap:65px}
-  .footer-logo{background:#fff;display:inline-block;padding:9px 12px}
-  .footer-logo img{width:153px}
-  .footer-desc{font-size:13px;color:#a8acb2;max-width:290px;margin-top:21px}
-  .footer h3{font-family:var(--font);font-size:11px;color:#fff;text-transform:uppercase;letter-spacing:.13em;margin:0 0 21px;font-weight:700}
-  .footer-links{display:grid;gap:11px}
-  .footer-links a,.footer p.address{color:#b5b9bf;font-size:13px;line-height:1.7}
-  .footer-links a:hover{color:#fff}
-  .footer-bottom{border-top:1px solid #303236;margin-top:55px;padding-top:23px;display:flex;justify-content:space-between;gap:18px;color:#8f969e;font-size:11px}
-  .mobile-bottom{display:none}
-  /* Responsive */
-  @media(max-width:1120px){
-    .header-nav{gap:17px}.header-phone{display:none}.hero{min-height:590px}.hero-copy{padding-left:clamp(25px,4vw,55px)}
-    .hero h1{font-size:clamp(46px,5vw,65px)}.services-list{column-gap:36px}.atelier-copy{padding:67px 48px}
-  }
-  @media(max-width:820px){
-    html{scroll-padding-top:70px}
-    .shell{padding:0 22px}
-    .header-inner{height:70px}
-    .brand img{width:143px;max-height:44px}
-    .header-nav,.header-actions>.btn,.header-phone{display:none}
-    .menu-trigger{display:flex}
-    .menu-panel{display:none;position:absolute;left:0;right:0;top:70px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 22px 23px;box-shadow:0 20px 30px #00000015}
-    .menu-panel.is-open{display:block}
-    .menu-panel a{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #ececec;font-family:var(--display);font-size:17px;font-weight:700}
-    .menu-panel .menu-cta{margin-top:17px;background:var(--red);color:#fff;display:flex;justify-content:center;padding:14px;border:0;font-size:13px}
-    .hero{display:flex;flex-direction:column;min-height:0}
-    .hero-photo{order:0;min-height:0;height:clamp(270px,56vw,490px)}
-    .hero-photo img{object-position:center 54%}
-    .hero-copy{order:1;padding:37px 22px 48px}
-    .hero h1{font-size:clamp(42px,8.6vw,69px);margin:14px 0 19px}
-    .hero p{font-size:14px;line-height:1.65}
-    .hero-ctas{margin-top:24px}
-    .hero .micro{margin-top:20px}
-    .photo-label{left:22px;bottom:20px}
-    .trustline .shell{min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .trust-item{padding:22px 8px 22px 0;gap:12px}
-    .trust-item+.trust-item{padding-left:20px}
-    .trust-item:last-child{display:none}
-    .trust-icon{font-size:18px}
-    .section-space{padding:76px 0}
-    .section-head{display:block;margin-bottom:32px}
-    .section-head .section-intro{margin-top:18px}
-    .section-title{font-size:clamp(34px,6.7vw,50px)}
-    .services-list{grid-template-columns:1fr;gap:0}
-    .service{min-height:0;padding:22px 0}
-    .service h3{font-size:19px}
-    .reviews-top{align-items:start;flex-direction:column;gap:14px;margin-bottom:26px}
-    .review-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:13px;scrollbar-width:none;scroll-padding-left:22px;padding-bottom:4px;margin-right:-22px}
-    .review-grid::-webkit-scrollbar{display:none}
-    .review{flex:0 0 min(86vw,430px);min-height:300px;padding:29px 26px;scroll-snap-align:start}
-    .review blockquote{font-size:17px}
-    .reviews-foot{align-items:start;flex-direction:column}
-    .atelier{display:flex;flex-direction:column}
-    .atelier-photo{min-height:0;height:340px}
-    .atelier-copy{padding:58px 22px 66px}
-    .atelier h2{font-size:clamp(35px,7vw,52px)}
-    .vehicle-layout{grid-template-columns:1fr}
-    .vehicle-media{order:-1;aspect-ratio:1.42}
-    .vehicle-copy h2{margin:15px 0}
-    .promise-layout{grid-template-columns:1fr;gap:36px}
-    .contact-layout{align-items:flex-start;flex-direction:column}
-    .footer-inner{grid-template-columns:1fr 1fr;gap:43px}
-    .footer-inner>:first-child{grid-column:1/-1}
-    .footer-bottom{flex-direction:column;gap:7px;margin-bottom:58px}
-    .mobile-bottom{display:grid;position:fixed;bottom:0;left:0;right:0;grid-template-columns:1fr 1fr;padding:8px 12px calc(8px + env(safe-area-inset-bottom));gap:8px;background:#fff;box-shadow:0 -6px 30px #00000018;z-index:60;border-top:1px solid #e9e9e9}
-    .mobile-bottom a{height:46px;display:flex;justify-content:center;align-items:center;font-size:12px;font-weight:700;border:1px solid #dedfe1;color:var(--ink)}
-    .mobile-bottom a:last-child{background:var(--red);border-color:var(--red);color:#fff}
-  }
-  @media(max-width:400px){
-    .hero h1{font-size:40px}.hero-ctas{gap:10px}.hero-ctas .btn{min-height:49px;padding:0 16px;font-size:12px}.trust-item strong{font-size:10.5px}.trust-item span{font-size:10px}
-  }
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
-  </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Belgocar — vente de véhicules, entretien, réparation et accompagnement automobile à Zaventem.">
+<meta name="theme-color" content="#ffffff">
+<title>Belgocar — Votre partenaire automobile en Belgique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#ff1e1e;--red2:#ee1c25;--text:#101114;--muted:#70757f;--line:#e8eaee;--bg:#f5f6f8;--card:#ffffff;--radius:22px;--shadow:0 10px 40px rgba(16,17,20,.06);--max:1440px}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:82px} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased} img{display:block;max-width:100%} a{text-decoration:none;color:inherit} h1,h2,h3,p{margin:0} button,input{font:inherit}
+.wrap{width:min(var(--max),100%);margin:auto;padding-inline:clamp(18px,3vw,40px)}
+.section{padding-top:18px}.section-space{margin-top:16px}.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;border-radius:999px;padding:0 28px;border:1px solid transparent;background:var(--red2);color:#fff;font-weight:800;font-size:14px;box-shadow:0 10px 25px rgba(238,28,37,.18);transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px);background:#db0f19}.btn.light{background:#fff;color:#111;border-color:#eceef2;box-shadow:none}.btn.small{min-height:44px;padding:0 18px;font-size:13px}.btn .arrow{font-size:16px;line-height:1}
+.topbar{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(232,234,238,.85)}
+.topbar .inner{display:flex;align-items:center;gap:28px;min-height:86px}.brand img{width:245px;max-width:100%;height:auto}.nav{display:flex;align-items:center;gap:34px;margin:auto}.nav a{font-size:14px;font-weight:600;color:#2a2e36;position:relative;padding:6px 0}.nav a.active{font-weight:800}.nav a.active:after,.nav a:hover:after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:4px;border-radius:999px;background:var(--red2)}
+.top-actions{display:flex;align-items:center;gap:14px}.top-phone{display:flex;align-items:center;gap:9px;height:44px;padding:0 17px;border:1px solid #eceef2;border-radius:999px;background:#fff;font-size:14px;font-weight:600;white-space:nowrap}.top-phone svg{width:15px;height:15px;fill:var(--red2)}.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1px solid #eceef2;background:#fff;align-items:center;justify-content:center}.menu-btn svg{width:22px;height:22px}.mobile-nav{display:none}
+.hero{padding-top:0}.hero-shell{background:#fff;border-radius:0 0 28px 28px;overflow:hidden;box-shadow:var(--shadow)}
+.hero-main{position:relative;display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);min-height:405px}.hero-copy{position:relative;z-index:2;padding:44px 34px 24px 42px;background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.96) 78%,rgba(255,255,255,.72) 92%,rgba(255,255,255,0) 100%)}.eyebrow{font-size:12px;letter-spacing:.08em;font-weight:700;color:#707784;text-transform:uppercase}.hero h1{font-size:clamp(42px,4vw,68px);line-height:.98;letter-spacing:-.04em;font-weight:900;margin-top:14px;max-width:620px}.hero h1 .accent{color:var(--red2);display:block}.hero p{max-width:570px;font-size:15px;line-height:1.6;color:#646a73;margin-top:18px}.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}.hero-visual{position:relative;background:url('assets/v4-hero.webp') center center/cover no-repeat}.hero-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,0) 28%)}
+.hero-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #eceef2;background:linear-gradient(180deg,#ffffff,#fbfbfc)}.hero-feature{display:flex;align-items:center;gap:12px;padding:18px 24px;min-height:80px}.hero-feature+.hero-feature{border-left:1px solid #eceef2}.hero-feature svg{width:34px;height:34px;stroke:var(--red2);stroke-width:1.8;fill:none;flex:none}.hero-feature span{font-size:14px;line-height:1.3;font-weight:600;color:#2a2f37}
+.services-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}.service-card{display:flex;align-items:center;gap:18px;padding:18px 22px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.service-card svg{width:42px;height:42px;stroke:var(--red2);stroke-width:1.7;fill:none;flex:none}.service-card h3{font-size:16px;font-weight:800;margin-bottom:5px}.service-card p{font-size:13px;line-height:1.42;color:#6c727b}.service-card .go{margin-left:auto;display:grid;place-items:center;width:36px;height:36px;border:1px solid #eceef2;border-radius:50%;font-size:18px;color:var(--red2);flex:none}
+.featured{display:grid;grid-template-columns:266px minmax(0,1fr);gap:18px;margin-top:18px}.feature-intro{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px;box-shadow:var(--shadow)}.feature-intro .eyebrow{color:#4b4f56}.section-title{font-size:24px;line-height:.95;font-weight:900;letter-spacing:-.04em;text-transform:uppercase;margin:8px 0 18px}.section-title .accentline{display:block;width:54px;height:4px;border-radius:999px;background:var(--red2);margin:14px 0 0}.feature-intro p{font-size:14px;line-height:1.55;color:#67707b;margin-bottom:22px}.vehicle-carousel{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(245px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:8px;scrollbar-width:none}.vehicle-carousel::-webkit-scrollbar{display:none}.vehicle-card{scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);min-width:0}.vehicle-card .photo{aspect-ratio:2.06;background:#ddd}.vehicle-card .photo img{width:100%;height:100%;object-fit:cover}.vehicle-card .info{padding:14px 16px 16px}.vehicle-card h3{font-size:14px;font-weight:900;margin:0 0 3px}.vehicle-card .sub{font-size:13px;color:#6d7480}.vehicle-card .meta{display:flex;flex-wrap:wrap;gap:14px 16px;font-size:12px;color:#737a84;margin:12px 0 12px}.vehicle-card .meta span{display:flex;align-items:center;gap:6px}.vehicle-card .meta svg{width:14px;height:14px;stroke:#88909a;stroke-width:1.7;fill:none}.vehicle-card .bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}.vehicle-card .price{font-size:18px;font-weight:900}.vehicle-card .circle{display:grid;place-items:center;width:34px;height:34px;border:1px solid #eceef2;border-radius:50%;color:var(--red2);font-size:18px}
+.mid-grid{display:grid;grid-template-columns:minmax(0,58%) minmax(0,42%);gap:18px;margin-top:18px}.atelier-box{position:relative;min-height:210px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#111}.atelier-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.atelier-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,14,18,.88) 0%,rgba(11,14,18,.68) 35%,rgba(11,14,18,.12) 65%,rgba(11,14,18,.04) 100%);display:flex;align-items:stretch}.atelier-copy{padding:26px 24px;color:#fff;max-width:330px;display:flex;flex-direction:column;justify-content:center}.atelier-copy .eyebrow{color:#d8dde6}.atelier-copy h2{font-size:24px;line-height:.95;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:8px 0 15px}.atelier-copy p{font-size:14px;line-height:1.5;color:#e6e8ee;margin-bottom:18px}
+.why-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}.why-box h2{font-size:18px;line-height:1.1;font-weight:900;text-transform:uppercase;margin:0 0 16px}.why-box h2 .red{color:var(--red2)}.reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.reason{padding:18px 18px;border:1px solid #edf0f4;border-radius:14px;background:#fff}.reason svg{width:34px;height:34px;stroke:var(--red2);stroke-width:1.8;fill:none}.reason h3{font-size:15px;line-height:1.25;font-weight:800;margin-top:10px}.reason p{font-size:13px;line-height:1.4;color:#6c737c;margin-top:6px}
+.reviews{display:grid;grid-template-columns:300px 160px minmax(0,1fr);gap:18px;margin-top:18px}.reviews-title,.rating-box,.testimonial-box{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.reviews-title{padding:24px}.reviews-title .eyebrow{color:#4e545d}.reviews-title h2{font-size:26px;line-height:.95;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin-top:8px}.reviews-title .bar{width:54px;height:4px;border-radius:999px;background:var(--red2);margin-top:12px}.rating-box{padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.google-word{font-size:20px;font-weight:800;line-height:1;font-family:Arial,sans-serif;letter-spacing:-1px}.google-word .b{color:#4285f4}.google-word .r{color:#ea4335}.google-word .y{color:#fbbc05}.google-word .g{color:#34a853}.rating-box .score{font-size:38px;font-weight:900;line-height:1;margin-top:10px}.stars{color:#ffb400;letter-spacing:2px;font-size:18px;margin-top:6px}.rating-box .small{font-size:12px;color:#6d7480;margin-top:6px}.testimonial-box{padding:18px 22px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px}.avatar-stack{display:flex;align-items:center}.avatar{width:52px;height:52px;border-radius:50%;border:3px solid #fff;overflow:hidden;box-shadow:0 8px 18px rgba(16,17,20,.08);flex:none;background:#e9edf4}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.fake{display:grid;place-items:center;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff6e6e,#e51d28)}.testimonial-box .arrowbtn{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1px solid #eceef2;background:#fff;color:#c4c7ce;font-size:20px}.testimonial-box .quote{font-size:15px;line-height:1.6;color:#343944}.testimonial-box .name{margin-top:12px;font-size:14px;font-weight:600;color:#444a54}.dots{display:flex;gap:6px;justify-content:center;margin-top:16px}.dots span{width:8px;height:8px;border-radius:50%;background:#d3d7dd}.dots span.active{background:var(--red2)}
+.contact-strip{position:relative;overflow:hidden;margin-top:18px;border-radius:18px;background:#0f1319;box-shadow:var(--shadow)}.contact-strip:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,12,16,.92) 0%,rgba(9,12,16,.78) 42%,rgba(9,12,16,.42) 72%,rgba(9,12,16,.18) 100%),url('assets/v4-contact.webp') center/cover no-repeat}.contact-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr auto;align-items:center;gap:30px;padding:24px 28px;color:#fff}.contact-inner .eyebrow{color:#b8bfc9}.contact-inner h2{font-size:18px;line-height:1.1;font-weight:900;text-transform:uppercase;margin-top:4px}.contact-inner p{font-size:15px;line-height:1.25;font-weight:800;margin-top:2px}.contact-info{display:flex;flex-wrap:wrap;gap:20px;margin-top:16px;color:#d6d9de;font-size:14px}.contact-info span{display:flex;align-items:center;gap:8px}.contact-info svg{width:16px;height:16px;fill:var(--red2)}
+.footer{padding:28px 0 40px}.footer .row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.footer-logo img{width:170px}.footer p,.footer a{font-size:13px;color:#737984}.footer a:hover{color:var(--red2)}.footer-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end}.mobile-actions{display:none}
+@media (max-width:1180px){.nav{gap:24px}.brand img{width:220px}.hero-main{grid-template-columns:46% 54%}.services-row{grid-template-columns:repeat(2,minmax(0,1fr))}.mid-grid,.reviews{grid-template-columns:1fr}.reviews{gap:14px}.rating-box{align-items:flex-start;text-align:left}}
+@media (max-width:860px){html{scroll-padding-top:70px}.topbar .inner{min-height:70px}.nav,.top-actions .top-phone,.top-actions .btn{display:none}.menu-btn{display:flex;margin-left:auto}.brand img{width:178px}.mobile-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #eceef2;border-bottom:1px solid #eceef2;box-shadow:0 16px 34px rgba(16,17,20,.08);padding:14px 20px 20px}.mobile-nav.open{display:block}.mobile-nav a{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #eff2f5;font-size:15px;font-weight:700}.mobile-nav .btn{display:flex;margin-top:14px}.hero-main{grid-template-columns:1fr;min-height:0}.hero-copy{padding:30px 20px 16px;background:linear-gradient(180deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 65%,rgba(255,255,255,.70) 84%,rgba(255,255,255,.0) 100%)}.hero-visual{min-height:245px;order:-1}.hero h1{font-size:44px}.hero p{font-size:14px}.hero-features{grid-template-columns:1fr}.hero-feature+.hero-feature{border-left:0;border-top:1px solid #eceef2}.services-row{grid-template-columns:1fr}.featured{grid-template-columns:1fr}.vehicle-carousel{grid-auto-columns:82%}.mid-grid{grid-template-columns:1fr}.reviews{grid-template-columns:1fr}.testimonial-box{grid-template-columns:minmax(0,1fr)}.testimonial-box .arrowbtn{display:none}.contact-inner{grid-template-columns:1fr}.footer .row{display:block}.footer-links{justify-content:flex-start;margin-top:12px}}
+@media (max-width:560px){.wrap{padding-inline:14px}.hero-shell{border-radius:0 0 22px 22px}.hero h1{font-size:39px}.hero-btns{gap:10px}.btn{min-height:48px;padding:0 18px;font-size:13px}.service-card{padding:16px 16px}.service-card h3{font-size:15px}.feature-intro{padding:22px 18px}.vehicle-card .info{padding:12px 13px 14px}.contact-inner{padding:22px 18px}.topbar .inner{gap:16px}.mobile-actions{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid #eceef2;box-shadow:0 -8px 25px rgba(16,17,20,.08)}.mobile-actions a{min-height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid #eceef2;background:#fff}.mobile-actions a:last-child{background:var(--red2);border-color:var(--red2);color:#fff}.footer{padding-bottom:84px}}
+
+/* V4.1 : mobile plus court, logos défilants, photographie recentrée */
+.hero-main{grid-template-columns:minmax(0,41%) minmax(0,59%);min-height:355px}
+.hero-copy{padding:32px 24px 26px 34px}
+.hero h1{font-size:clamp(40px,3.65vw,60px);line-height:.99}
+.hero p{font-size:13px;margin-top:15px}
+.hero-btns{margin-top:20px}
+.hero-visual{background-position:center center;background-size:contain;background-color:#e7e8e9}
+.hero-visual:before{background:transparent}
+.hero-shell{border-radius:0 0 22px 22px}
+.brands-ticker{background:#fff;border:1px solid #eceef2;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;padding:13px 0 17px}
+.brands-heading{display:flex;justify-content:center;align-items:center;gap:14px;color:#717780;font-size:10px;font-weight:800;letter-spacing:.18em;margin:2px 22px 12px;white-space:nowrap}
+.brand-rule{height:1px;width:clamp(24px,8vw,100px);background:#e6e9ed}
+.brands-window{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent 0%,black 4%,black 96%,transparent 100%)}
+.brands-track{display:flex;gap:40px;align-items:center;width:max-content;animation:marquee-logos 43s linear infinite;will-change:transform}
+.brands-set{display:flex;align-items:center;gap:40px;flex-shrink:0}
+.brand-logo{display:flex;align-items:center;justify-content:center;gap:9px;min-width:max-content;white-space:nowrap;opacity:.82}
+.brand-logo img{display:block;width:29px;height:29px;object-fit:contain;filter:grayscale(1)}
+.brand-logo strong{color:#343b45;font-size:12px;letter-spacing:-.015em;font-weight:800}
+.brands-window:hover .brands-track{animation-play-state:paused}
+@keyframes marquee-logos{to{transform:translateX(calc(-50% - 20px))}}
+.atelier-box img{object-position:center center}
+.why-kicker{color:#8e949d;font-size:10px;font-weight:800;letter-spacing:.14em;margin-bottom:9px}
+.why-box .reasons{gap:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+.why-box .reason{background:transparent;border:0;border-top:1px solid #edf0f4;border-radius:0;padding:14px 10px 12px 0}
+.why-box .reason h3{margin-top:0;font-size:13px;font-weight:800;line-height:1.25}
+.why-box .reason p{font-size:11.5px;line-height:1.5}
+@media(max-width:1180px){
+ .hero-visual{background-size:contain;background-position:center}
+ .why-box .reasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:860px){
+ .hero-main{grid-template-columns:1fr;min-height:unset;display:flex;flex-direction:column}
+ .hero-visual{order:-1;min-height:220px;aspect-ratio:838/340;background-size:contain;background-position:center;background-color:#e7e8e9}
+ .hero-copy{padding:22px 20px 24px;background:#fff}
+ .hero h1{font-size:clamp(36px,6vw,47px);margin-top:9px}
+ .hero p{font-size:12px;line-height:1.5;margin-top:12px}
+ .hero-btns{margin-top:16px}
+ .brands-ticker{margin-top:11px}
+ .featured{grid-template-columns:1fr;margin-top:12px}
+ .mid-grid{margin-top:12px}
+ .reviews{margin-top:12px;gap:10px}
+ .feature-intro{padding:18px 20px}
+ .feature-intro p{font-size:12px;margin-bottom:12px}
+ .section-title{margin-bottom:10px}
+ .vehicle-card .photo{aspect-ratio:2.05}
+ .atelier-box{min-height:190px}
+ .atelier-box img{object-position:center center}
+ .why-box{padding:16px 18px}
+ .why-box h2{margin-bottom:12px}
+ .review-source-link{margin-top:4px}
+ .contact-strip{margin-top:12px}
+}
+@media(max-width:560px){
+ .wrap{padding-inline:13px}
+ .hero-visual{min-height:0;height:auto;aspect-ratio:838/340;background-size:100% auto;background-position:center center}
+ .hero-copy{padding:16px 17px 20px}
+ .hero h1{font-size:clamp(34px,8vw,42px);margin-top:8px;line-height:.98}
+ .hero p{font-size:11px;line-height:1.43;margin-top:10px}
+ .hero-btns{gap:8px;margin-top:13px}
+ .hero-btns .btn{min-height:42px;padding:0 15px;font-size:11px}
+ .hero-shell{border-radius:0 0 18px 18px}
+ .brands-ticker{padding:10px 0 12px}
+ .brands-heading{font-size:9px;margin-bottom:9px}
+ .brand-logo{gap:7px}
+ .brand-logo img{width:23px;height:23px}
+ .brand-logo strong{font-size:11px}
+ .brands-track,.brands-set{gap:27px}
+ .feature-intro{padding:16px 16px}
+ .feature-intro .eyebrow{font-size:10px}
+ .section-title{font-size:22px}
+ .feature-intro p{font-size:11.5px;line-height:1.5}
+ .feature-intro .btn{min-height:39px;padding:0 14px;font-size:11px}
+ .vehicle-carousel{grid-auto-columns:74%;gap:9px}
+ .vehicle-card .photo{aspect-ratio:2.1}
+ .vehicle-card h3{font-size:13px}
+ .vehicle-card .sub{font-size:11px}
+ .vehicle-card .meta{font-size:10px;gap:8px}
+ .vehicle-card .price{font-size:16px}
+ .mid-grid{gap:10px}
+ .atelier-box{min-height:0;height:auto;aspect-ratio:784/209}
+ .atelier-box img{object-position:center center}
+ .why-box .reasons{grid-template-columns:1fr 1fr;gap:0 12px}
+ .why-box .reason{padding:11px 0}
+ .why-box .reason h3{font-size:12px}
+ .why-box .reason p{font-size:10px}
+ .reviews{gap:9px}
+ .reviews-title{padding:16px 18px}
+ .reviews-title h2{font-size:23px}
+ .rating-box{padding:14px 18px;min-height:0}
+ .testimonial-box{padding:15px 18px;gap:10px}
+ .avatar{height:37px;width:37px;border-width:2px}
+ .avatar-stack{margin-bottom:10px}
+ .testimonial-box .quote{font-size:12px;line-height:1.5}
+ .testimonial-box .name{font-size:11px;margin-top:7px}
+ .dots{margin-top:9px}
+ .contact-inner{padding:18px}
+ .contact-inner h2{font-size:17px}
+ .contact-inner p{font-size:12px}
+ .contact-info{gap:9px;font-size:11px;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.brands-track{animation:none}.brands-window{overflow-x:auto;mask-image:none}}
+
+
+/* V4.2 — Demande de rendez-vous, accessibilité routière, assistant virtuel */
+.atelier-cta-overlay{position:absolute;inset:0;z-index:2;cursor:pointer}
+.booking{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.16fr);gap:20px;align-items:center;padding:24px;background:#151b23;color:#fff;border-radius:20px;box-shadow:var(--shadow)}
+.booking-intro{padding:12px 22px}
+.booking-kicker{font-size:10px;letter-spacing:.14em;font-weight:800;color:#ff6069}
+.booking-intro h2{font-size:clamp(27px,2.35vw,39px);line-height:1.12;letter-spacing:-.045em;margin:13px 0 15px;font-weight:900}
+.booking-intro h2 span{color:#ff535b}
+.booking-intro p{font-size:13px;line-height:1.75;color:#d2d7df;max-width:490px}
+.booking-proof{display:flex;flex-wrap:wrap;gap:13px 18px;margin-top:22px;font-size:11px;font-weight:700;color:#f5f6f7}
+.booking-contact{margin-top:24px;color:#aeb6c1;font-size:12px}
+.booking-contact a{color:#fff;text-decoration:underline;text-underline-offset:4px;font-weight:800}
+.booking-details{background:#fff;border-radius:15px;color:#111820;min-width:0}
+.booking-summary{list-style:none;display:flex;align-items:center;gap:15px;cursor:pointer;padding:21px;min-height:95px}
+.booking-summary::-webkit-details-marker{display:none}
+.booking-summary-icon{display:grid;place-items:center;border-radius:13px;width:44px;height:44px;color:#fff;background:var(--red2);font-size:22px;flex:none}
+.booking-summary strong{display:block;font-size:16px;font-weight:900;line-height:1.3}
+.booking-summary small{display:block;color:#747c86;font-size:11px;margin-top:4px;line-height:1.5}
+.booking-summary-caret{margin-left:auto;font-size:25px;transition:transform .2s}
+.booking-details[open] .booking-summary-caret{transform:rotate(180deg)}
+.booking-form{padding:0 20px 20px;border-top:1px solid #eff0f2}
+.booking-purposes{border:0;padding:14px 0 5px;margin:0;display:flex;flex-wrap:wrap;gap:7px}
+.booking-purposes legend{font-size:12px;font-weight:800;padding-top:15px;padding-bottom:9px}
+.booking-purposes label{cursor:pointer}
+.booking-purposes input{position:absolute;opacity:0;width:1px;height:1px}
+.booking-purposes label span{display:block;border:1px solid #e3e6eb;border-radius:100px;padding:8px 12px;font-size:10.5px;font-weight:700;color:#4b5563}
+.booking-purposes input:checked+span{background:#fff1f2;border-color:#ec2632;color:#d51422}
+.booking-purposes input:focus-visible+span{outline:2px solid var(--red2);outline-offset:2px}
+.booking-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 12px;margin-top:15px}
+.booking-fields label{font-size:11px;font-weight:800;line-height:1.4;color:#394150}
+.booking-fields input,.booking-fields select,.booking-fields textarea{font-size:12px;font-weight:500;display:block;width:100%;border:1px solid #e3e7eb;border-radius:10px;background:#fbfcfd;color:#18212b;outline:none;padding:11px 12px;margin-top:6px;min-height:43px}
+.booking-fields textarea{resize:vertical;min-height:70px}
+.booking-fields input:focus,.booking-fields select:focus,.booking-fields textarea:focus{border-color:#ed2933;box-shadow:0 0 0 3px #ffeded}
+.booking-wide{grid-column:1/-1}
+.booking-submit{width:100%;min-height:46px;margin-top:14px;cursor:pointer}
+.booking-disclaimer{font-size:10px;line-height:1.55;color:#79818c;margin-top:9px}
+.access-bar{display:flex;align-items:center;gap:17px;border-radius:16px;background:#fff;border:1px solid #e9ecf0;padding:17px 22px;box-shadow:var(--shadow)}
+.access-icon{font-size:34px;font-weight:400;color:var(--red2);line-height:1;flex:none}
+.access-content{min-width:0;flex:1}.access-content strong{display:block;font-size:13px;line-height:1.3;font-weight:900}.access-content span{display:block;font-size:11px;line-height:1.6;margin-top:4px;color:#6d7682}
+.access-roads{display:flex;gap:6px;flex:none}.access-roads span{font-size:11px;font-weight:900;color:#333b46;background:#f4f5f6;border:1px solid #e6e9ed;border-radius:6px;padding:7px 9px}
+.access-link{flex:none;display:inline-flex;align-items:center;justify-content:center;padding:10px 17px;border-radius:999px;background:#ffeff0;color:#dc1523;font-size:11px;font-weight:900;white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.assistant-widget{position:fixed;right:24px;bottom:22px;z-index:110;font-family:Inter,Arial,sans-serif}
+.assistant-launcher{border:0;background:transparent;display:flex;align-items:center;gap:8px;cursor:pointer;padding:0}
+.assistant-nudge{background:#fff;padding:10px 15px;border-radius:22px;border:1px solid #eceef2;box-shadow:0 7px 24px #11182028;font-size:12px;font-weight:800;color:#111820}
+.assistant-avatar{display:block;width:65px;height:65px;border-radius:50%;border:3px solid #fff;overflow:hidden;box-shadow:0 9px 30px #10182038;background:#f5f5f5}
+.assistant-avatar img{width:100%;height:100%;object-fit:cover}
+.assistant-launcher-dot{position:absolute;bottom:2px;right:0;width:23px;height:23px;display:grid;place-items:center;border-radius:50%;background:var(--red2);color:#fff;font-weight:900;font-size:13px;border:2px solid #fff}
+.assistant-panel{position:absolute;right:0;bottom:80px;width:min(365px,calc(100vw - 28px));max-height:min(525px,calc(100dvh - 130px));background:#fff;border:1px solid #e5e8ee;border-radius:18px;overflow:hidden;box-shadow:0 14px 52px #10182238;display:flex;flex-direction:column}
+.assistant-panel[hidden]{display:none}
+.assistant-header{display:flex;gap:12px;align-items:center;background:#161d27;color:#fff;padding:13px 16px;flex:none}
+.assistant-face{width:43px;height:43px;object-fit:cover;border-radius:50%;border:2px solid white}
+.assistant-header div{min-width:0;flex:1}.assistant-header strong{display:block;font-size:13px;font-weight:900}.assistant-header span{font-size:10px;color:#bec8d2;display:block;margin-top:4px}
+.assistant-header button{background:#ffffff20;border:0;border-radius:50%;width:30px;height:30px;color:#fff;font-size:21px;cursor:pointer}
+.assistant-messages{padding:16px;min-height:130px;overflow-y:auto;flex:1;background:#f7f8fa;display:flex;flex-direction:column;gap:11px}
+.assistant-bubble{font-size:12px;line-height:1.55;padding:11px 13px;border-radius:14px;max-width:90%;white-space:pre-wrap;overflow-wrap:anywhere}
+.assistant-bot{background:#fff;color:#212731;border:1px solid #eaedf0;align-self:flex-start;border-bottom-left-radius:4px}
+.assistant-user{background:#ee1c25;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.assistant-bubble a{display:inline-block;margin-top:7px;color:#dc1523;font-weight:900;text-decoration:underline;text-underline-offset:2px}
+.assistant-quick{padding:10px 12px 3px;display:flex;gap:6px;flex-wrap:wrap;flex:none;background:#fff}
+.assistant-quick button{border:1px solid #e5e7eb;border-radius:999px;background:#fff;color:#333b46;padding:7px 10px;font-size:10px;font-weight:800;cursor:pointer}
+.assistant-quick button:hover{border-color:#e81f2a;color:#e81f2a}
+.assistant-input{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff}
+.assistant-input input{flex:1;min-width:0;border:1px solid #e2e6eb;background:#fafbfc;padding:10px 12px;border-radius:999px;outline:none;font-size:12px}
+.assistant-input button{display:grid;place-items:center;width:37px;height:37px;flex:none;border:0;border-radius:50%;background:#ed1e29;color:#fff;cursor:pointer;font-size:15px}
+.assistant-disclaimer{font-size:9px;color:#8a929d;background:#fff;text-align:center;padding:0 10px 10px}
+@media(max-width:900px){.booking{grid-template-columns:1fr;padding:18px}.booking-intro{padding:8px 5px}.booking-intro h2{font-size:29px}.booking-proof,.booking-contact{margin-top:13px}.access-bar{flex-wrap:wrap}.access-content{flex-basis:calc(100% - 68px)}.access-link{margin-left:auto}}
+@media(max-width:560px){.booking{gap:14px;padding:15px;border-radius:16px}.booking-intro h2{font-size:26px;margin:9px 0 10px}.booking-intro p{font-size:11.5px;line-height:1.5}.booking-proof{font-size:10px;gap:8px}.booking-contact{font-size:11px}.booking-summary{min-height:73px;padding:12px}.booking-summary-icon{width:36px;height:36px;font-size:18px}.booking-summary strong{font-size:13px}.booking-summary small{font-size:9px}.booking-form{padding:0 12px 14px}.booking-fields{grid-template-columns:1fr 1fr;gap:10px}.booking-purposes label span{font-size:10px;padding:7px 10px}.access-bar{gap:10px;padding:13px 14px}.access-content strong{font-size:11.5px}.access-content span{font-size:10px}.access-icon{font-size:25px}.access-roads{margin-left:32px}.access-link{padding:8px 12px;font-size:10px}.assistant-widget{right:13px;bottom:78px}.assistant-avatar{width:54px;height:54px}.assistant-nudge{font-size:10px;padding:8px 11px}.assistant-panel{bottom:66px;width:calc(100vw - 26px);max-height:min(460px,calc(100dvh - 174px))}}
+</style>
+<style>.example-note{display:block;font-size:11px;line-height:1.5;color:#8c919b;margin-top:15px}.review-source-link{display:inline-block;color:#ef1e26;font-weight:700;font-size:12px;margin-top:7px}</style></head>
 <body>
-<a class="skip" href="#contenu">Aller au contenu</a>
-<header class="header" id="haut">
-  <div class="shell header-inner">
-    <a class="brand" href="#haut" aria-label="Belgocar, accueil"><img src="assets/logo-belgocar.png" alt="Belgocar" width="166"></a>
-    <nav class="header-nav" aria-label="Navigation principale">
-      <a href="#services">Nos services</a><a href="#vehicules">Nos véhicules</a><a href="#atelier">Notre atelier</a><a href="#avis">Avis clients</a>
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="brand" href="#accueil" aria-label="Belgocar"><img src="assets/v4-logo.webp" alt="Belgocar"></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="active" href="#accueil">Accueil</a>
+      <a href="#vehicules">Nos véhicules</a>
+      <a href="#apropos">Notre expertise</a>
+      <a href="#atelier-rdv">RDV atelier</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="header-actions">
-      <a class="header-phone" href="tel:+32470934501">0470 93 45 01</a>
-      <a class="btn btn-red" href="#contact">Nous contacter <span aria-hidden="true">↗</span></a>
-      <button class="menu-trigger" id="menuTrigger" type="button" aria-label="Ouvrir le menu" aria-controls="mobileMenu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-      </button>
+    <div class="top-actions">
+      <a class="top-phone" href="tel:+32470934501"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.46.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.19.19 2.35.55 3.46a1 1 0 0 1-.24 1z"/></svg>0470 93 45 01</a>
+      <a class="btn small" href="#atelier-rdv">Rendez-vous <span class="arrow">→</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
     </div>
   </div>
-  <nav class="menu-panel" id="mobileMenu" aria-label="Navigation mobile">
-    <a href="#services">Nos services <span aria-hidden="true">↗</span></a>
-    <a href="#vehicules">Nos véhicules <span aria-hidden="true">↗</span></a>
-    <a href="#atelier">Notre atelier <span aria-hidden="true">↗</span></a>
-    <a href="#avis">Avis clients <span aria-hidden="true">↗</span></a>
-    <a class="menu-cta" href="#contact">Nous contacter ↗</a>
+  <nav class="mobile-nav wrap" id="mobileNav">
+    <a href="#accueil">Accueil <span>→</span></a>
+    <a href="#vehicules">Nos véhicules <span>→</span></a>
+    <a href="#apropos">Notre expertise <span>→</span></a>
+    <a href="#atelier-rdv">RDV atelier <span>→</span></a>
+    <a href="#contact">Contact <span>→</span></a>
+    <a class="btn small" href="#atelier-rdv">Rendez-vous atelier →</a>
   </nav>
 </header>
-<main id="contenu">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <div class="eyebrow"><span class="dash" aria-hidden="true"></span>Votre partenaire automobile en Belgique</div>
-      <h1 id="hero-title">Le confort d'une concession.<span>Les prix d'un indépendant.</span></h1>
-      <p>Choisir une voiture, l'entretenir, la faire réparer. Chez Belgocar, nous vous accompagnons à chaque étape, avec une approche simple et humaine.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-red" href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Découvrir nos véhicules <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="#services">Explorer nos services <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="micro">Vente de véhicules · Entretien · Réparation · Accompagnement</div>
+<main class="section" id="accueil">
+  <div class="wrap hero">
+    <div class="hero-shell">
+      <section class="hero-main">
+        <div class="hero-copy">
+          <div class="eyebrow">Votre partenaire automobile en Belgique</div>
+          <h1>Le confort d'une concession,<span class="accent">les prix d'un indépendant.</span></h1>
+          <p>Vente de véhicules de qualité, entretien, réparation et un accompagnement personnalisé. Chez Belgocar, vous profitez d'un service professionnel et d'une relation de confiance, sans compromis.</p>
+          <div class="hero-btns">
+            <a class="btn" href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir nos véhicules <span class="arrow">→</span></a>
+            <a class="btn light" href="#atelier-rdv">Prendre rendez-vous <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Façade Belgocar avec SUV devant le showroom"></div>
+      </section>
+      
     </div>
-    <div class="hero-photo">
-      <img src="assets/banniere-vehicules.webp" alt="Véhicules devant les installations de Belgocar" fetchpriority="high">
-      <div class="hero-index">BELGOCAR / 01</div>
-      <div class="photo-label"><span class="circle" aria-hidden="true"></span>Une autre idée du service automobile.</div>
-    </div>
-  </section>
 
-  <div class="trustline" aria-label="Nos engagements">
-    <div class="shell">
-      <div class="trust-item"><span class="trust-icon">01.</span><div><strong>Une relation directe</strong><span>Un interlocuteur à votre écoute</span></div></div>
-      <div class="trust-item"><span class="trust-icon">02.</span><div><strong>Des solutions concrètes</strong><span>De l'achat à l'après-vente</span></div></div>
-      <div class="trust-item"><span class="trust-icon">03.</span><div><strong>Une expertise automobile</strong><span>Au service de votre tranquillité</span></div></div>
+    <section class="brands-ticker section-space" aria-label="Marques automobiles">
+  <div class="brands-heading"><span class="brand-rule"></span><span>L'UNIVERS MULTIMARQUES</span><span class="brand-rule"></span></div>
+  <div class="brands-window">
+    <div class="brands-track">
+      <div class="brands-set"><span class="brand-logo"><img src="https://cdn.simpleicons.org/audi/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Audi</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/bmw/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>BMW</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/mercedesbenz/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Mercedes-Benz</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volkswagen/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volkswagen</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/peugeot/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Peugeot</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/renault/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Renault</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/toyota/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Toyota</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volvo/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volvo</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/hyundai/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Hyundai</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/ford/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Ford</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/skoda/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Škoda</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/opel/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Opel</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/seat/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>SEAT</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/porsche/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Porsche</strong></span></div>
+      <div class="brands-set" aria-hidden="true"><span class="brand-logo"><img src="https://cdn.simpleicons.org/audi/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Audi</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/bmw/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>BMW</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/mercedesbenz/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Mercedes-Benz</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volkswagen/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volkswagen</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/peugeot/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Peugeot</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/renault/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Renault</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/toyota/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Toyota</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volvo/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volvo</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/hyundai/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Hyundai</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/ford/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Ford</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/skoda/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Škoda</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/opel/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Opel</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/seat/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>SEAT</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/porsche/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Porsche</strong></span></div>
     </div>
   </div>
+</section>
 
-  <section class="services section-space" id="services">
-    <div class="shell">
-      <div class="section-head">
-        <div><div class="eyebrow"><span class="dash" aria-hidden="true"></span>Ce que nous faisons</div><h2 class="section-title">L'automobile, dans<br>son ensemble.</h2></div>
-        <p class="section-intro">Acheter un véhicule n'est qu'une étape. Belgocar vous accompagne avant, pendant et après, avec des services pensés autour de vos besoins.</p>
+    <section class="featured section-space" id="vehicules">
+      <div class="feature-intro">
+        <div class="eyebrow">Nos véhicules</div>
+        <h2 class="section-title">En vedette<span class="accentline"></span></h2>
+        <p>Des véhicules soigneusement sélectionnés pour répondre à toutes vos envies. Berlines, SUV, citadines ou véhicules premium : trouvez celui qui vous correspond.</p>
+        <a class="btn small" href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir tout notre stock <span class="arrow">→</span></a><small class="example-note">Véhicules et tarifs illustratifs dans cette maquette. Voir le stock réel sur AutoScout24.</small>
       </div>
-      <div class="services-list">
-        <article class="service"><span class="service-index">01</span><div class="service-content"><h3>Vente de véhicules</h3><p>Un accompagnement personnalisé pour trouver le véhicule qui vous correspond.</p></div><span class="service-glyph" aria-hidden="true">↗</span></article>
-        <article class="service"><span class="service-index">02</span><div class="service-content"><h3>Entretien & mécanique</h3><p>Un interlocuteur pour le suivi, l'entretien et les besoins mécaniques de votre voiture.</p></div><span class="service-glyph" aria-hidden="true">↗</span></article>
-        <article class="service"><span class="service-index">03</span><div class="service-content"><h3>Carrosserie</h3><p>Des solutions pour prendre en charge vos travaux de carrosserie.</p></div><span class="service-glyph" aria-hidden="true">↗</span></article>
-        <article class="service"><span class="service-index">04</span><div class="service-content"><h3>Services & accompagnement</h3><p>Conseil, démarches et solutions adaptées à votre projet automobile.</p></div><span class="service-glyph" aria-hidden="true">↗</span></article>
+      <div class="vehicle-carousel" aria-label="Véhicules en vedette">
+        <article class="vehicle-card"><div class="photo"><img src="assets/v4-audi.webp" alt="Audi Q5 en vedette"></div><div class="info"><h3>AUDI Q5</h3><div class="sub">40 TDI quattro S line</div><div class="meta"><span><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 10h16M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></svg>2021</span><span><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>68 000 km</span><span><svg viewBox="0 0 24 24"><path d="M12 3s4 5 4 9a4 4 0 0 1-8 0c0-4 4-9 4-9z"/></svg>Diesel</span></div><div class="bottom"><div class="price">34 990 €</div><span class="circle">→</span></div></div></article>
+        <article class="vehicle-card"><div class="photo"><img src="assets/v4-bmw.webp" alt="BMW Série 3 en vedette"></div><div class="info"><h3>BMW Série 3</h3><div class="sub">330e M Sport</div><div class="meta"><span><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 10h16M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></svg>2022</span><span><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>48 000 km</span><span><svg viewBox="0 0 24 24"><path d="M7 14h10M9 10h6M5 5h14v14H5z"/></svg>Hybride</span></div><div class="bottom"><div class="price">36 990 €</div><span class="circle">→</span></div></div></article>
+        <article class="vehicle-card"><div class="photo"><img src="assets/v4-mercedes.webp" alt="Mercedes GLC en vedette"></div><div class="info"><h3>MERCEDES GLC</h3><div class="sub">300 de 4MATIC AMG Line</div><div class="meta"><span><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 10h16M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></svg>2021</span><span><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>72 000 km</span><span><svg viewBox="0 0 24 24"><path d="M7 14h10M9 10h6M5 5h14v14H5z"/></svg>Hybride</span></div><div class="bottom"><div class="price">42 990 €</div><span class="circle">→</span></div></div></article>
+        <article class="vehicle-card"><div class="photo"><img src="assets/v4-volvo.webp" alt="Volvo XC60 en vedette"></div><div class="info"><h3>VOLVO XC60</h3><div class="sub">B4 R-Design</div><div class="meta"><span><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 10h16M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></svg>2022</span><span><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>32 000 km</span><span><svg viewBox="0 0 24 24"><path d="M12 3s4 5 4 9a4 4 0 0 1-8 0c0-4 4-9 4-9z"/></svg>Diesel</span></div><div class="bottom"><div class="price">39 990 €</div><span class="circle">→</span></div></div></article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="reviews section-space" id="avis" aria-labelledby="avis-title">
-    <div class="shell">
-      <div class="reviews-top">
-        <div><div class="eyebrow"><span class="dash" aria-hidden="true"></span>La parole à nos clients</div><h2 class="section-title" id="avis-title">La confiance se construit.<br>Elle se partage aussi.</h2></div>
-        <div class="google-mark"><span class="google-g" aria-hidden="true">G</span>Avis publiés sur Google</div>
-      </div>
-      <div class="review-grid" aria-label="Témoignages clients">
-        <article class="review">
-          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
-          <blockquote>« J’ai acheté une voiture chez BelgoCar et tout s’est très bien passé. Le véhicule était propre, la livraison rapide et ils se sont montrés flexibles pour convenir d’un moment qui m’arrangeait. Des commerçants fiables que je recommande ! »</blockquote>
-          <div class="review-author"><strong>Soufiane Az</strong><span>Google</span></div>
-        </article>
-        <article class="review">
-          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
-          <blockquote>« Je suis plus que satisfaite de l’achat de mon véhicule, tout était fluide de la prise de rdv à la réception de mon véhicule. Ce sont des personnes sérieuses et très aimables, je recommande les yeux fermés ! »</blockquote>
-          <div class="review-author"><strong>Nsagency</strong><span>Google</span></div>
-        </article>
-      </div>
-      <div class="reviews-foot">
-        <small>Extraits sélectionnés à partir de témoignages Google partagés pour la maquette.</small>
-        <a class="text-link" href="https://share.google/ILrRMi8K4Id0xyxyQ" target="_blank" rel="noopener noreferrer">Lire les avis sur Google <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </section>
+    <section class="mid-grid section-space" id="apropos">
+      <article class="atelier-box">
+        <img src="assets/v4-atelier.webp" alt="L’atelier de Belgocar, une expertise automobile" loading="lazy"><a href="#atelier-rdv" class="atelier-cta-overlay" aria-label="Prendre rendez-vous à l’atelier"></a>
+      </article>
+      <aside class="why-box" id="expertise">
+  <div class="why-kicker">BELGOCAR · LE SAVOIR-FAIRE</div>
+  <h2>Pourquoi <span class="red">choisir Belgocar ?</span></h2>
+  <div class="reasons">
+    <div class="reason"><h3>01 / Expertise automobile</h3><p>Vente, mécanique et accompagnement auprès d'une même équipe.</p></div>
+    <div class="reason"><h3>02 / Qualité des véhicules</h3><p>Une sélection multimarques pensée pour des besoins réels.</p></div>
+    <div class="reason"><h3>03 / Échange direct</h3><p>Des réponses claires, un interlocuteur facilement joignable.</p></div>
+    <div class="reason"><h3>04 / Suivi après l'achat</h3><p>Une relation qui continue bien après la remise des clés.</p></div>
+  </div>
+</aside>
+    </section>
 
-  <section class="atelier" id="atelier">
-    <div class="atelier-photo"><img src="assets/atelier.webp" alt="Un technicien automobile dans l'atelier Belgocar" loading="lazy"></div>
-    <div class="atelier-copy">
-      <div class="eyebrow light"><span class="dash" aria-hidden="true"></span>L'expertise à votre service</div>
-      <h2>Notre métier ne s'arrête pas à la remise des clés.</h2>
-      <p>L'automobile, c'est aussi le suivi, la mécanique et les conseils qui comptent après l'achat. Nous privilégions une relation durable, transparente et sans complications inutiles.</p>
-      <a class="btn" href="mailto:info@belgocar.be?subject=Demande%20atelier%20Belgocar">Contacter l'atelier <span aria-hidden="true">↗</span></a>
-    </div>
-  </section>
-
-  <section class="vehicles section-space" id="vehicules">
-    <div class="shell vehicle-layout">
-      <div class="vehicle-copy">
-        <div class="eyebrow"><span class="dash" aria-hidden="true"></span>Votre prochaine voiture</div>
-        <h2 class="section-title">Trouvez celle<br>qui vous ressemble.</h2>
-        <p>Parcourez les véhicules actuellement proposés par Belgocar. Les annonces, caractéristiques et prix sont consultables sur notre vitrine automobile.</p>
-        <a class="btn" href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir les véhicules disponibles <span aria-hidden="true">↗</span></a>
-        <span class="tiny">Disponibilités et tarifs à consulter sur AutoScout24.</span>
+    
+<section class="booking section-space" id="atelier-rdv" aria-labelledby="booking-title">
+  <div class="booking-intro">
+    <div class="booking-kicker">L'ATELIER BELGOCAR · ENTRETIEN & MÉCANIQUE</div>
+    <h2 id="booking-title">On s'occupe de votre voiture.<br><span>Vous gardez l'esprit tranquille.</span></h2>
+    <p>Une révision à prévoir, un bruit à vérifier ou une intervention à organiser ? Décrivez-nous votre besoin et notre équipe revient vers vous pour convenir d'un rendez-vous.</p>
+    <div class="booking-proof"><span>✓ Demande sans engagement</span><span>✓ Réponse personnalisée</span></div>
+    <div class="booking-contact"><span>Vous préférez en parler ?</span> <a href="tel:+32470934501">0470 93 45 01 ↗</a></div>
+  </div>
+  <details class="booking-details" id="bookingDetails">
+    <summary class="booking-summary">
+      <span class="booking-summary-icon">↗</span>
+      <span><strong>Planifier mon passage à l'atelier</strong><small>Entretien, diagnostic, mécanique ou carrosserie</small></span>
+      <span class="booking-summary-caret" aria-hidden="true">⌄</span>
+    </summary>
+    <form class="booking-form" id="bookingForm">
+      <fieldset class="booking-purposes">
+        <legend>De quoi avez-vous besoin ?</legend>
+        <label><input type="radio" name="motif" value="Entretien / révision" checked required><span>Entretien / révision</span></label>
+        <label><input type="radio" name="motif" value="Diagnostic"><span>Diagnostic</span></label>
+        <label><input type="radio" name="motif" value="Réparation mécanique"><span>Mécanique</span></label>
+        <label><input type="radio" name="motif" value="Carrosserie"><span>Carrosserie</span></label>
+        <label><input type="radio" name="motif" value="Autre demande"><span>Autre</span></label>
+      </fieldset>
+      <div class="booking-fields">
+        <label>Votre nom *<input name="nom" placeholder="Nom et prénom" autocomplete="name" required maxlength="100"></label>
+        <label>Téléphone *<input name="telephone" type="tel" placeholder="04XX XX XX XX" autocomplete="tel" required maxlength="30"></label>
+        <label>Votre email *<input name="email" type="email" placeholder="vous@exemple.be" autocomplete="email" required maxlength="150"></label>
+        <label>Votre véhicule <input name="vehicule" placeholder="Ex. BMW Série 3 · 2021" maxlength="100"></label>
+        <label>Date souhaitée <input name="date" id="bookingDate" type="date"></label>
+        <label>Votre disponibilité <select name="moment"><option value="Flexible">Flexible</option><option value="Matin">Le matin</option><option value="Après-midi">L'après-midi</option></select></label>
+        <label class="booking-wide">Un mot pour l'équipe <textarea name="description" rows="2" maxlength="1200" placeholder="Un voyant allumé, une révision à programmer, un bruit inhabituel…"></textarea></label>
       </div>
-      <div class="vehicle-media">
-        <img src="assets/remise-cles.webp" alt="Remise des clés d'un véhicule" loading="lazy">
-        <div class="vehicle-media-note">Une relation qui va plus loin.</div>
-      </div>
-    </div>
-  </section>
+      <button class="btn booking-submit" type="submit">Préparer ma demande <span class="arrow" aria-hidden="true">→</span></button>
+      <p class="booking-disclaimer" id="bookingFeedback" role="status">Votre messagerie s'ouvrira avec votre demande préremplie. Envoyez l'email pour la transmettre ; le rendez-vous sera confirmé par l'équipe.</p>
+    </form>
+  </details>
+</section>
 
-  <section class="promise section-space">
-    <div class="shell promise-layout">
-      <div><div class="eyebrow"><span class="dash" aria-hidden="true"></span>Notre approche</div><h2 class="section-title">La différence<br>est dans le service.</h2></div>
-      <div class="promise-items">
-        <article class="promise-item"><span>01</span><div><h3>De la clarté, dès le départ.</h3><p>Des réponses utiles, un échange direct et les informations dont vous avez besoin pour décider sereinement.</p></div></article>
-        <article class="promise-item"><span>02</span><div><h3>Une approche humaine.</h3><p>Nous prenons le temps de comprendre votre recherche, plutôt que de vous pousser vers un choix par défaut.</p></div></article>
-        <article class="promise-item"><span>03</span><div><h3>Un partenaire dans la durée.</h3><p>Votre expérience compte autant avant l'achat qu'une fois sur la route.</p></div></article>
+<section class="access-bar section-space" aria-label="Venir chez Belgocar">
+  <div class="access-icon" aria-hidden="true">⌖</div>
+  <div class="access-content"><strong>Facile d'accès depuis Bruxelles et Zaventem</strong><span>Leuvensesteenweg 246, 1932 Zaventem · À proximité du Ring R0 et de l'E40</span></div>
+  <div class="access-roads"><span>R0</span><span>E40</span></div>
+  <a class="access-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leuvensesteenweg%20246%2C%201932%20Zaventem%2C%20Belgium" target="_blank" rel="noopener noreferrer">Itinéraire ↗</a>
+</section>
+<section class="reviews section-space" id="avis">
+      <div class="reviews-title">
+        <div class="eyebrow">Nos clients</div>
+        <h2>En parlent le mieux</h2>
+        <div class="bar"></div>
       </div>
-    </div>
-  </section>
+      <div class="rating-box">
+        <div class="google-word"><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span></div>
+        <div class="score" style="font-size:21px">Avis clients</div>
+        <div class="stars">★★★★★</div>
+        <div class="small"><a href="https://share.google/ILrRMi8K4Id0xyxyQ" target="_blank" rel="noopener noreferrer" class="review-source-link">Consulter sur Google ↗</a></div>
+      </div>
+      <div class="testimonial-box">
+        <button class="arrowbtn" type="button" aria-label="Avis précédent" id="reviewPrev">‹</button>
+        <div>
+          <div class="avatar-stack">
+            <div class="avatar"><img src="assets/v4-avatar.png" alt="Portrait illustratif de la maquette"></div>
+            <div class="avatar fake" style="margin-left:-10px">S</div>
+            <div class="avatar fake" style="margin-left:-10px;background:linear-gradient(135deg,#1d4ed8,#0ea5e9)">N</div>
+          </div>
+          <div class="quote" id="testimonialQuote">“ J’ai acheté une voiture chez BelgoCar et tout s’est très bien passé. Le véhicule était propre, la livraison rapide et ils se sont montrés flexibles pour convenir d’un moment qui m’arrangeait. ”</div>
+          <div class="name" id="testimonialAuthor">— Soufiane Az · Google</div>
+          <div class="dots"><span class="active"></span><span></span><span></span></div>
+        </div>
+        <button class="arrowbtn" type="button" aria-label="Avis suivant" id="reviewNext">›</button>
+      </div>
+    </section>
 
-  <section class="contact" id="contact">
-    <div class="shell contact-layout">
-      <div><div class="eyebrow light"><span class="dash" aria-hidden="true"></span>Parlons de votre projet</div><h2>Une question, un véhicule en tête ?<br>On en discute.</h2><p>Belgocar · Votre partenaire automobile en Belgique</p></div>
-      <a class="btn" href="tel:+32470934501">Appeler Belgocar <span aria-hidden="true">↗</span></a>
-    </div>
-  </section>
+    <section class="contact-strip section-space" id="contact">
+      <div class="contact-inner">
+        <div>
+          <div class="eyebrow">Une question ?</div>
+          <h2>Un projet automobile ?</h2>
+          <p>Notre équipe est à votre disposition pour vous conseiller.</p>
+          <div class="contact-info">
+            <span><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.46.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.19.19 2.35.55 3.46a1 1 0 0 1-.24 1z"/></svg>0470 93 45 01</span>
+            <span><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 7l8 6 8-6"/></svg>info@belgocar.be</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 21s7-5.33 7-11a7 7 0 0 0-14 0c0 5.67 7 11 7 11zm0-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>Leuvensesteenweg 246, 1932 Zaventem</span>
+          </div>
+        </div>
+        <a class="btn" href="mailto:info@belgocar.be?subject=Demande%20depuis%20le%20site%20Belgocar">Nous contacter <span class="arrow">→</span></a>
+      </div>
+    </section>
+  </div>
 </main>
 <footer class="footer">
-  <div class="shell">
-    <div class="footer-inner">
-      <div><a class="footer-logo" href="#haut" aria-label="Belgocar, revenir en haut"><img src="assets/logo-belgocar.png" alt="Belgocar"></a><p class="footer-desc">Le confort d'une concession, les prix d'un indépendant. Un partenaire pour votre quotidien automobile.</p></div>
-      <div><h3>Explorer</h3><div class="footer-links"><a href="#services">Nos services</a><a href="#vehicules">Nos véhicules</a><a href="#atelier">Notre atelier</a><a href="#avis">Avis clients</a></div></div>
-      <div><h3>Nous trouver</h3><div class="footer-links"><a href="tel:+32470934501">0470 93 45 01</a><a href="mailto:info@belgocar.be">info@belgocar.be</a><p class="address">Belgique · Adresse du garage à confirmer</p></div></div>
-    </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> Belgocar — Prototype de présentation.</span><span>Design & contenus à valider avant lancement officiel.</span></div>
+  <div class="wrap row">
+    <a class="footer-logo" href="#accueil"><img src="assets/v4-logo.webp" alt="Belgocar"></a>
+    <div class="footer-links"><a href="#vehicules">Nos véhicules</a><a href="#apropos">Notre expertise</a><a href="#contact">Contact</a><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">AutoScout24</a></div>
   </div>
 </footer>
-<div class="mobile-bottom" aria-label="Actions rapides">
-  <a href="tel:+32470934501">Appeler le garage</a>
-  <a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir les véhicules ↗</a>
+<div class="mobile-actions"><a href="tel:+32470934501">Appeler</a><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir les voitures</a></div>
+
+<div class="assistant-widget" id="assistantWidget">
+  <section class="assistant-panel" id="assistantPanel" aria-label="Assistant virtuel Belgocar" hidden>
+    <div class="assistant-header"><img class="assistant-face" src="assets/v4-chat-avatar.webp" alt="Avatar fictif de l'assistant"><div><strong>Votre assistant Belgocar</strong><span>Assistant virtuel · réponses rapides</span></div><button id="assistantClose" type="button" aria-label="Fermer la discussion">×</button></div>
+    <div class="assistant-messages" id="assistantMessages" role="log" aria-live="polite"><div class="assistant-bubble assistant-bot">Bonjour 👋 Besoin d'un rendez-vous à l'atelier, d'un itinéraire ou d'un renseignement sur nos voitures ? Je peux vous orienter.</div></div>
+    <div class="assistant-quick" id="assistantQuick" aria-label="Questions fréquentes">
+      <button type="button" data-query="rdv">Prendre RDV</button><button type="button" data-query="adresse">Nous trouver</button><button type="button" data-query="stock">Nos voitures</button><button type="button" data-query="contact">Parler à l'équipe</button>
+    </div>
+    <form class="assistant-input" id="assistantInput"><label for="assistantText" class="sr-only">Votre question</label><input id="assistantText" autocomplete="off" maxlength="240" placeholder="Posez votre question…" required><button type="submit" aria-label="Envoyer la question">➤</button></form>
+    <div class="assistant-disclaimer">Assistant de démonstration · réponses automatiques. Avatar provisoire.</div>
+  </section>
+  <button class="assistant-launcher" id="assistantToggle" type="button" aria-label="Ouvrir le chat Belgocar" aria-expanded="false" aria-controls="assistantPanel">
+    <span class="assistant-nudge">Une question ?</span><span class="assistant-avatar"><img src="assets/v4-chat-avatar.webp" alt=""></span><span class="assistant-launcher-dot" aria-hidden="true">?</span>
+  </button>
 </div>
 <script>
-  document.getElementById('year').textContent=String(new Date().getFullYear());
-  (function(){
-    var trigger=document.getElementById('menuTrigger');
-    var panel=document.getElementById('mobileMenu');
-    if(!trigger||!panel)return;
-    function close(){panel.classList.remove('is-open');trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-label','Ouvrir le menu');}
-    trigger.addEventListener('click',function(){
-      var opening=!panel.classList.contains('is-open');
-      panel.classList.toggle('is-open',opening);
-      trigger.setAttribute('aria-expanded',String(opening));
-      trigger.setAttribute('aria-label',opening?'Fermer le menu':'Ouvrir le menu');
-    });
-    panel.querySelectorAll('a').forEach(function(link){link.addEventListener('click',close);});
-    window.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-    window.addEventListener('resize',function(){if(window.innerWidth>820)close();});
-  })();
+const btn=document.getElementById('menuBtn');
+const nav=document.getElementById('mobileNav');
+btn?.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));});
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+// Témoignages issus de la précédente sélection Google : vérifier auprès du client avant publication.
+const testimonials=[
+  {text:"J’ai acheté une voiture chez BelgoCar et tout s’est très bien passé. Le véhicule était propre, la livraison rapide et ils se sont montrés flexibles pour convenir d’un moment qui m’arrangeait.",author:"Soufiane Az · Google"},
+  {text:"Je suis plus que satisfaite de l’achat de mon véhicule, tout était fluide de la prise de rdv à la réception de mon véhicule. Ce sont des personnes sérieuses et très aimables, je recommande les yeux fermés !",author:"Nsagency · Google"},
+  {text:"Top partenaire !",author:"H-auto solution · Google"}
+];
+let reviewIndex=0;
+function showReview(step){
+  reviewIndex=(reviewIndex+step+testimonials.length)%testimonials.length;
+  const v=testimonials[reviewIndex];
+  document.getElementById("testimonialQuote").textContent="“ "+v.text+" ”";
+  document.getElementById("testimonialAuthor").textContent="— "+v.author;
+  document.querySelectorAll(".dots span").forEach((dot,i)=>dot.classList.toggle("active",i===reviewIndex));
+}
+document.getElementById("reviewPrev")?.addEventListener("click",()=>showReview(-1));
+document.getElementById("reviewNext")?.addEventListener("click",()=>showReview(1));
+
+/* Rendez-vous : email préparé côté navigateur, aucune réservation non confirmée. */
+const bookingDetails=document.getElementById("bookingDetails");
+const bookingForm=document.getElementById("bookingForm");
+const bookingDate=document.getElementById("bookingDate");
+if(bookingDate){const now=new Date(), local=new Date(now.getTime()-now.getTimezoneOffset()*60000);bookingDate.min=local.toISOString().slice(0,10);}
+function revealBooking(){
+  if(bookingDetails)bookingDetails.open=true;
+  document.getElementById("atelier-rdv")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.querySelectorAll('a[href="#atelier-rdv"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();history.replaceState(null,"","#atelier-rdv");revealBooking();}));
+if(location.hash==="#atelier-rdv"){bookingDetails.open=true;}
+bookingForm?.addEventListener("submit",e=>{
+  e.preventDefault();if(!bookingForm.reportValidity())return;
+  const d=new FormData(bookingForm);
+  const message=["Bonjour l’équipe Belgocar,","","Je souhaite organiser un passage à l’atelier.","",
+    "Type de demande : "+d.get("motif"),
+    "Nom : "+d.get("nom"),
+    "Téléphone : "+d.get("telephone"),
+    "Email : "+d.get("email"),
+    "Véhicule : "+(d.get("vehicule")||"À préciser"),
+    "Date souhaitée : "+(d.get("date")||"À convenir"),
+    "Moment : "+d.get("moment"),
+    "Description : "+(d.get("description")||"Aucun détail supplémentaire"),
+    "","Pouvez-vous me recontacter pour confirmer la disponibilité ?","Merci."].join("\n");
+  const link="mailto:info@belgocar.be?subject="+encodeURIComponent("Demande de rendez-vous atelier — "+d.get("nom"))+"&body="+encodeURIComponent(message);
+  document.getElementById("bookingFeedback").textContent="Votre messagerie va s'ouvrir. Envoyez le message pour transmettre la demande ; le rendez-vous n'est pas encore confirmé.";
+  window.location.href=link;
+});
+/* Chat de démonstration purement local, sans backend et sans fausse disponibilité humaine. */
+const panel=document.getElementById("assistantPanel");
+const toggle=document.getElementById("assistantToggle");
+const closeChat=document.getElementById("assistantClose");
+const log=document.getElementById("assistantMessages");
+function setChat(open){panel.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.setAttribute("aria-label",open?"Fermer le chat Belgocar":"Ouvrir le chat Belgocar");if(open)document.getElementById("assistantText").focus();}
+toggle?.addEventListener("click",()=>setChat(panel.hidden));
+closeChat?.addEventListener("click",()=>setChat(false));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)setChat(false)});
+function bubble(text,type="bot",linkText,linkHref){
+ const item=document.createElement("div");item.className="assistant-bubble assistant-"+type;item.textContent=text;
+ if(linkText&&linkHref){const a=document.createElement("a");a.textContent=linkText;a.href=linkHref;if(linkHref.startsWith("https")){a.target="_blank";a.rel="noopener noreferrer";}item.appendChild(document.createElement("br"));item.appendChild(a);}
+ log.appendChild(item);log.scrollTop=log.scrollHeight;
+}
+const mapsUrl="https://www.google.com/maps/dir/?api=1&destination=Leuvensesteenweg%20246%2C%201932%20Zaventem%2C%20Belgium";
+function answerChat(input){
+ const q=String(input).trim().toLowerCase();if(!q)return;
+ bubble(input,"user");
+ if(/rdv|rendez|entretien|atelier|mécan|repar|répar|diagnos|carrosserie|revision|révision/.test(q))
+   bubble("Préparez votre demande pour l'atelier en moins d'une minute. Notre équipe vous recontactera pour fixer le créneau.","bot","Ouvrir le formulaire ↗","#atelier-rdv");
+ else if(/adresse|localis|trouver|venir|route|itin|e40|ring|zaventem|accès|acces/.test(q))
+   bubble("Retrouvez-nous au Leuvensesteenweg 246, 1932 Zaventem, près du Ring R0 et de l'E40.","bot","Lancer l'itinéraire ↗",mapsUrl);
+ else if(/voitur|stock|véhicul|vehicul|acheter|prix|bmw|audi|occasion/.test(q))
+   bubble("Les voitures disponibles et leurs tarifs actualisés sont sur notre vitrine AutoScout24.","bot","Voir les véhicules ↗","https://www.autoscout24.be/fr/professional/belgocar");
+ else if(/telephone|téléphone|appeler|contact|email|mail|humain|personne|equipe|équipe/.test(q))
+   bubble("Pour parler directement à notre équipe, appelez le 0470 93 45 01 ou écrivez à info@belgocar.be.","bot","Envoyer un email ↗","mailto:info@belgocar.be");
+ else if(/horaire|ouvert|fermeture|heure|jour/.test(q))
+   bubble("Pour confirmer nos horaires ou la disponibilité de l'atelier, contactez directement notre équipe au 0470 93 45 01.","bot","Appeler Belgocar ↗","tel:+32470934501");
+ else bubble("Je peux vous aider à prendre rendez-vous, à trouver Belgocar ou à voir nos voitures. Pour une question plus précise, notre équipe est joignable directement.","bot","Contacter l'équipe ↗","mailto:info@belgocar.be");
+}
+document.querySelectorAll("#assistantQuick button").forEach(b=>b.addEventListener("click",()=>{const v=b.dataset.query;const names={rdv:"Prendre rendez-vous",adresse:"Comment venir ?",stock:"Voir les voitures",contact:"Parler à l'équipe"};answerChat(names[v]||v);}));
+document.getElementById("assistantInput")?.addEventListener("submit",e=>{e.preventDefault();const input=document.getElementById("assistantText");if(!input.value.trim())return;answerChat(input.value);input.value="";input.focus();});
+document.addEventListener("click",e=>{if(e.target.closest(".assistant-bubble a[href='#atelier-rdv']")){setChat(false);revealBooking();}});
 </script>
 </body>
 </html>
