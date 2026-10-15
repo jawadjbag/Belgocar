@@ -3,160 +3,126 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#141716">
-  <meta name="description" content="Prototype du futur site vitrine Belgocar — sélection automobile et accompagnement.">
-  <title>Belgocar — Tout roule.</title>
+  <meta name="theme-color" content="#AB2633">
+  <meta name="description" content="Belgocar : achat de voitures d'occasion, entretien, réparation et carrosserie. Le confort d'une concession, les prix d'un indépendant.">
+  <title>Belgocar — Vente, entretien & carrosserie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#161a19;--ink2:#242826;--sand:#f7f7f3;--muted:#6b706b;--border:#e7e9e3;--accent:#ddfa69;--white:#fff;--radius:18px;}
-    * {box-sizing:border-box} html {scroll-behavior:smooth} body {margin:0;background:var(--sand);color:var(--ink);font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased} body.modal-open {overflow:hidden}
-    a {text-decoration:none;color:inherit} button,input,textarea {font:inherit} button {cursor:pointer} button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible {outline:3px solid #83992a;outline-offset:3px}
-    .wrap {width:min(1370px,calc(100% - 76px));margin-inline:auto}
-    .eyebrow {font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:13px}.eyebrow:before {content:'';width:25px;height:2px;background:currentColor}
-    .announcement {height:33px;display:flex;align-items:center;justify-content:center;background:#dbf973;color:#151914;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-    .header {height:83px;display:flex;align-items:center;position:absolute;top:33px;left:0;right:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.20);color:white}
-    .nav {display:flex;align-items:center;justify-content:space-between;width:100%}
-    .brand {font-family:Manrope,sans-serif;font-size:25px;font-weight:800;letter-spacing:-.07em;white-space:nowrap}.brand b {color:var(--accent);font-weight:800}
-    .nav-links {display:flex;gap:35px;align-items:center}.nav-links a {font-size:12px;font-weight:700;opacity:.87;transition:opacity .2s}.nav-links a:hover{opacity:1}
-    .nav-cta {display:inline-flex;gap:22px;align-items:center;padding:14px 18px;background:#fff;color:#131615;font-size:11px;font-weight:800;border-radius:4px;transition:background .2s}.nav-cta:hover{background:var(--accent)}
-    .menu-btn {display:none;background:transparent;border:0;color:#fff;font-size:26px}
-    .hero {position:relative;min-height:690px;height:min(860px,calc(100svh - 33px));background:#1c2524;color:white;display:flex;align-items:center;overflow:hidden}
-    .hero-image {position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,14,.94) 0%,rgba(10,15,14,.79) 35%,rgba(10,15,14,.33) 70%,rgba(10,15,14,.27) 100%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=85') center/cover no-repeat;transform:scale(1.015);animation:zoomOut 1.5s ease-out both}
-    .hero-image::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,13,12,.6),transparent 40%)}
-    @keyframes zoomOut{from{transform:scale(1.09);filter:brightness(.7)}to{transform:scale(1.015);filter:brightness(1)}}
-    .hero .wrap {position:relative;z-index:1;padding-top:76px}
-    .hero-copy {max-width:770px}
-    .hero .eyebrow {color:var(--accent);margin-bottom:27px}
-    .hero h1 {font-family:Manrope,sans-serif;font-size:clamp(48px,6.8vw,105px);line-height:1.055;font-weight:700;letter-spacing:-.075em;margin:0 0 25px}
-    .hero h1 em {font-style:normal;color:var(--accent)}
-    .hero p {font-size:15px;color:rgba(255,255,255,.75);line-height:1.75;max-width:440px;margin:0 0 34px}
-    .btn {border:1px solid transparent;display:inline-flex;justify-content:center;align-items:center;gap:22px;font-weight:800;font-size:12px;padding:18px 22px;border-radius:5px;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)} .btn-accent {background:var(--accent);color:var(--ink)} .btn-outline{border-color:rgba(255,255,255,.5);color:white;background:transparent} .btn-dark{background:var(--ink);color:white}
-    .hero-actions {display:flex;flex-wrap:wrap;gap:12px}
-    .hero-bottom {display:flex;justify-content:space-between;align-items:flex-end;gap:25px;position:absolute;bottom:37px;left:0;right:0}
-    .hero-counter {display:flex;gap:55px}.hero-counter span {font-size:10px;color:rgba(255,255,255,.58);letter-spacing:.15em;text-transform:uppercase}.hero-counter strong{display:block;font-size:19px;color:white;letter-spacing:-.02em;margin-bottom:5px}
-    .scroll-cue {font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.18em;white-space:nowrap}
-    .ribbon {background:var(--ink);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);padding:0 max(38px,calc((100% - 1294px)/2));border-top:1px solid #414643}
-    .ribbon div {padding:23px 18px;border-right:1px solid #343a37;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:center;align-items:center;gap:15px}.ribbon div:last-child{border:0}.ribbon i{font-style:normal;color:var(--accent);font-size:20px;font-weight:400}
-    section {scroll-margin-top:30px}.section {padding:112px 0}.section-head {display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:38px}.section-head .eyebrow {color:#5c645e;margin-bottom:17px}.section-title{font-family:Manrope,sans-serif;font-size:clamp(34px,4.2vw,62px);letter-spacing:-.065em;line-height:1.08;margin:0;font-weight:750}.section-head .caption{max-width:330px;color:#777e78;font-size:14px;line-height:1.7;margin-bottom:4px}
-    .filters {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}.filter {border:1px solid #d9ddd5;border-radius:5px;background:transparent;padding:12px 18px;font-size:12px;font-weight:750;color:#646b64}.filter.active,.filter:hover {background:var(--ink);color:#fff;border-color:var(--ink)}
-    .cars-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.vehicle {background:white;border:1px solid var(--border);min-width:0;transition:transform .2s,box-shadow .2s}.vehicle:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(14,26,15,.09)}.vehicle[hidden]{display:none}
-    .vehicle-art {aspect-ratio:1.35;position:relative;overflow:hidden;background:#e4e7e3}.vehicle-art img {width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.vehicle:hover img{transform:scale(1.045)}.vehicle-art:before {content:'';position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 35%)}
-    .vehicle-art .sample {position:absolute;z-index:2;top:17px;left:17px;padding:8px 11px;background:#fff;color:#333;font-size:9px;letter-spacing:.1em;font-weight:800;text-transform:uppercase}
-    .vehicle-info {padding:24px 24px 22px}.vehicle-category {font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#8a9386;font-weight:800;margin:0 0 10px}.vehicle-info h3{font:700 25px/1.2 Manrope,sans-serif;letter-spacing:-.05em;margin:0 0 15px}.vehicle-meta{display:flex;gap:16px;color:#7a8179;font-size:12px;margin-bottom:22px;flex-wrap:wrap}.vehicle-footer{border-top:1px solid #ebece8;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.vehicle-footer strong{font-size:13px}.link-arrow{border:0;background:transparent;color:#1e2420;font-size:12px;font-weight:800;display:flex;gap:9px;align-items:center}
-    .note {display:flex;gap:10px;align-items:center;color:#848c83;font-size:11px;margin:19px 0 0}.note:before {content:'ⓘ';font-size:15px}
-    .services {background:#ecefe9}.services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.service {position:relative;min-height:285px;background:#fff;padding:30px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid #e5e8e0}.service:after{content:'';position:absolute;right:-65px;top:-65px;width:155px;height:155px;border:1px solid #e6ebe2;border-radius:100%;box-shadow:0 0 0 35px #f7f9f5}.service-count {font-size:11px;font-weight:800;letter-spacing:.12em;color:#98a095;z-index:1}.service h3 {font:750 24px/1.15 Manrope,sans-serif;letter-spacing:-.05em;margin:0 0 12px;z-index:1;position:relative}.service p {color:#777e76;font-size:12px;line-height:1.65;margin:0;position:relative;z-index:1}
-    .signature {background:#151a18;color:white;overflow:hidden}.signature-inner{display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center;min-height:540px}.signature .eyebrow{color:var(--accent)}.signature h2{font:750 clamp(39px,4.6vw,69px)/1.12 Manrope,sans-serif;letter-spacing:-.066em;margin:30px 0}.signature h2 em{font-style:normal;color:var(--accent)}.signature p{color:#a7afa9;line-height:1.85;font-size:14px;max-width:430px}
-    .signature-visual {min-height:430px;background:linear-gradient(145deg,#242e2a,#141917);position:relative;overflow:hidden;border-radius:3px}.signature-visual img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block;filter:brightness(.75)}.signature-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,18,16,.78))}.signature-visual .stamp{z-index:2;position:absolute;bottom:28px;left:30px;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800}
-    .contact {padding:115px 0;background:var(--accent)}.contact-inner {display:flex;justify-content:space-between;align-items:end;gap:30px}.contact .eyebrow{color:#2b3323}.contact h2{font:800 clamp(45px,6.4vw,88px)/1.05 Manrope,sans-serif;letter-spacing:-.075em;margin:24px 0 0}.contact p {max-width:320px;font-size:14px;line-height:1.7;color:#39432e}
-    .footer {background:#131715;color:#fff;padding:50px 0 27px}.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:45px;border-bottom:1px solid #303733}.footer .brand{font-size:30px}.footer p {color:#8f9991;font-size:12px;margin:16px 0 0}.footer-links {display:flex;gap:30px;font-size:12px;color:#bbc3bb}.footer-bottom {display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:25px;font-size:11px;color:#89948b}
-    .modal {border:0;padding:0;max-width:470px;width:calc(100% - 30px);box-shadow:0 30px 100px rgba(0,0,0,.3)}.modal::backdrop {background:rgba(7,13,9,.75);backdrop-filter:blur(5px)}.modal-content{padding:35px}.modal-header{display:flex;justify-content:space-between;gap:10px;align-items:start}.modal h2{font:800 29px/1.2 Manrope,sans-serif;letter-spacing:-.05em;margin:8px 0 15px}.modal p{font-size:14px;line-height:1.7;color:#687067}.modal-close{border:0;background:#eef0eb;width:34px;height:34px;font-size:23px;line-height:1}.modal .btn{margin-top:20px}
-    .reveal {opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:none}
-    @media(max-width:900px){.wrap{width:calc(100% - 44px)}.nav-links{gap:17px}.nav-links a{font-size:11px}.hero h1{font-size:clamp(52px,8.5vw,85px)}.services-grid{grid-template-columns:repeat(2,1fr)}.cars-grid{grid-template-columns:repeat(2,1fr)}.signature-inner{gap:25px}}
-    @media(max-width:650px){.wrap{width:calc(100% - 34px)}.announcement{font-size:9px}.header{height:70px}.brand{font-size:23px}.nav-cta{display:none}.menu-btn{display:block}.nav-links{position:absolute;left:0;right:0;top:70px;display:none;flex-direction:column;align-items:stretch;gap:0;background:#171c1a;padding:15px 20px 25px;border-bottom:1px solid #3a403b}.nav-links.open{display:flex}.nav-links a{padding:13px 0;font-size:14px}.hero{height:auto;min-height:760px}.hero-image{background-position:58% center}.hero .wrap{padding-top:105px;padding-bottom:142px}.hero h1{font-size:clamp(49px,11vw,73px)}.hero p{font-size:13px}.hero-bottom{bottom:24px}.hero-counter{gap:24px}.hero-counter strong{font-size:15px}.scroll-cue{display:none}.ribbon{grid-template-columns:repeat(2,1fr);padding:0 10px}.ribbon div{font-size:10px;padding:17px 12px}.ribbon div:nth-child(2){border-right:0}.ribbon div:nth-child(-n+2){border-bottom:1px solid #343a37}.section{padding:72px 0}.section-head{display:block}.section-head .caption{margin-top:18px}.cars-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr;gap:9px}.service{min-height:230px;padding:20px}.service h3{font-size:22px}.service p{font-size:11px}.signature-inner{grid-template-columns:1fr;padding:74px 0;gap:30px}.signature-visual,.signature-visual img{min-height:320px}.contact{padding:75px 0}.contact-inner{display:block}.contact-inner .btn{margin-top:17px}.footer-links{flex-wrap:wrap;gap:18px}}
-    @media(max-width:390px){.services-grid{grid-template-columns:1fr}.hero-actions .btn{width:100%}.hero h1{font-size:47px}.hero-counter{gap:13px}.hero-counter span{font-size:9px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-image{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+    :root{--red:#ab2633;--red-deep:#8c1d2a;--ink:#191b1e;--muted:#65676d;--cream:#f7f6f4;--white:#fff;--yellow:#ffd42b;--line:#e7e5e3;--serif: 'Barlow Condensed',Impact,'Arial Narrow',sans-serif;--body:'DM Sans',Arial,sans-serif}
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.55}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}img{display:block;max-width:100%}.wrap{max-width:1200px;margin:auto;padding:0 28px}.kicker{display:flex;align-items:center;gap:10px;letter-spacing:.16em;text-transform:uppercase;font-size:11px;font-weight:800;color:var(--red)}.kicker::before{content:'';height:3px;width:21px;background:var(--red)}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:.97}h2{font:800 clamp(46px,5.8vw,83px)/.95 var(--serif);letter-spacing:-.022em;text-transform:uppercase}p{line-height:1.65}.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;border:1px solid transparent;padding:17px 22px;font-size:13px;font-weight:800;white-space:nowrap;cursor:pointer;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-red{background:var(--red);color:white}.btn-red:hover{background:var(--red-deep)}.btn-white{background:#fff;color:#171717}.btn-outline{border-color:#ffffff7c;color:white;background:transparent}.btn-outline:hover{background:#ffffff15}.btn-dark{background:var(--ink);color:#fff}.btn svg{width:18px;height:18px;flex:none}
+    .topline{height:4px;background:linear-gradient(90deg,var(--red) 0 77%,var(--yellow) 77% 88%,#df2538 88%)}
+    header{position:sticky;top:0;background:#19191d;z-index:40;box-shadow:0 8px 30px #00000020}header .header-inner{display:flex;align-items:center;justify-content:space-between;height:82px;gap:28px}.brand img{width:176px;height:auto}.desktop-nav{display:flex;align-items:center;gap:29px;color:#fff;font-weight:700;font-size:13px}.desktop-nav a{transition:color .2s}.desktop-nav a:hover{color:#ffd42b}.header-cta{background:#fff;color:#1f1f1f;padding:13px 19px;border-radius:0;font-size:12px;font-weight:800}.menu-toggle{display:none;background:transparent;border:1px solid #ffffff44;color:#fff;width:43px;height:43px;align-items:center;justify-content:center;font-size:25px}.mobile-nav{display:none}
+    .hero{background:var(--red);position:relative;overflow:hidden;min-height:645px;color:#fff}.hero-grid{display:grid;grid-template-columns:minmax(0,54%) minmax(0,46%);min-height:645px}.hero-content{position:relative;z-index:2;padding:91px 32px 88px max(28px,calc((100vw - 1144px)/2));max-width:800px}.hero .eyebrow{font-size:12px;font-weight:800;letter-spacing:.19em;text-transform:uppercase;color:#ffe0e0;margin-bottom:27px}.hero h1{font:900 clamp(56px,4.8vw,74px)/.91 var(--serif);letter-spacing:-.024em;text-transform:uppercase;max-width:790px}.hero h1 span{color:#fff}.hero h1 em{font-style:normal;color:#ffd7db}.hero p{max-width:545px;margin:26px 0 33px;font-size:16px;color:#ffebed}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.hero-image{position:relative;overflow:hidden;background:#494446}.hero-image::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#ab263355,#00000000 55%),linear-gradient(0deg,#120f14b3,#0000 38%)}.hero-image img{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 53%}.hero-stamp{position:absolute;z-index:1;left:36px;bottom:37px;border:1px solid #ffffff80;background:#1717175c;backdrop-filter:blur(12px);color:white;padding:15px 20px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.hero-stamp strong{display:block;letter-spacing:0;font:800 24px var(--serif)}
+    .trust{background:var(--cream);border-bottom:1px solid var(--line)}.trust .wrap{display:grid;grid-template-columns:repeat(3,1fr);padding-top:27px;padding-bottom:27px}.trust-item{display:flex;justify-content:center;gap:15px;align-items:center;padding:0 22px;border-right:1px solid #dbd8d6}.trust-item:last-child{border-right:0}.trust-mark{font:800 39px/.95 var(--serif);color:var(--red);white-space:nowrap}.trust-desc{font-size:12px;font-weight:700;line-height:1.5}.trust-desc small{font-size:11px;display:block;font-weight:500;color:#777}
+    section{padding:105px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:44px}.section-head h2{max-width:650px;margin-top:17px}.section-head>p{max-width:400px;color:var(--muted);font-size:15px}
+    .services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.service{position:relative;min-height:299px;padding:28px 25px;background:var(--cream);border:1px solid #e9e5e3;display:flex;flex-direction:column;transition:background .2s,transform .2s}.service:hover{transform:translateY(-4px);background:#f1edeb}.service .number{font:800 16px var(--serif);color:var(--red);margin-bottom:auto}.service .service-icon{height:39px;width:39px;margin-bottom:26px;color:var(--red)}.service h3{font:800 31px var(--serif);text-transform:uppercase;margin-bottom:12px}.service p{font-size:12.5px;color:#626267}.service .arrow{position:absolute;right:25px;top:25px;color:var(--red);font-weight:800}
+    .featured{background:#1b1b20;color:#fff;padding:0}.featured-grid{display:grid;grid-template-columns:50% 50%;min-height:540px}.featured-photo{position:relative;min-height:475px}.featured-photo img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:42% center}.featured-content{padding:90px min(9vw,110px) 87px 70px;display:flex;flex-direction:column;justify-content:center}.featured .kicker{color:#ff8a94}.featured h2{margin:20px 0 25px}.featured p{color:#d2d0d1;max-width:490px;font-size:15px}.featured .btn{align-self:flex-start;margin-top:33px}.featured .micro{font-size:11px;color:#aaa7a7;margin-top:17px}
+    .reasons .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:85px}.reasons .intro{margin-top:26px;max-width:470px;color:var(--muted)}.reason-list{border-top:1px solid var(--line)}.reason-row{padding:23px 0;border-bottom:1px solid var(--line);display:flex;align-items:start;gap:23px}.reason-index{color:var(--red);font:800 25px var(--serif)}.reason-row h3{font-size:16px;line-height:1.3;margin-bottom:7px}.reason-row p{font-size:13px;color:var(--muted)}
+    .reviews{background:var(--cream);overflow:hidden}
+    .reviews-top{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:35px}
+    .reviews-intro .kicker{margin-bottom:17px}
+    .reviews-intro h2{max-width:850px;font-size:clamp(45px,5.3vw,74px)}
+    .reviews-sub{font-size:14px;color:var(--muted);margin-top:18px;max-width:630px}
+    .google-signal{background:#fff;border:1px solid var(--line);padding:17px 23px;display:flex;flex-direction:column;gap:6px;min-width:205px}
+    .google-word{font-size:19px;font-weight:700;letter-spacing:-.05em}
+    .google-word .g1{color:#4285f4}.google-word .g2{color:#ea4335}.google-word .g3{color:#fbbc05}.google-word .g4{color:#4285f4}.google-word .g5{color:#34a853}.google-word .g6{color:#ea4335}
+    .google-signal small{font-size:11px;color:var(--muted)}
+    .review-scroller{position:relative}
+    .review-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;align-items:stretch}
+    .review-card{background:white;border:1px solid #e9e5e3;padding:29px 28px 26px;min-height:350px;display:flex;flex-direction:column;box-shadow:0 13px 40px #28101607}
+    .review-card .review-header{display:flex;align-items:center;gap:11px;margin-bottom:23px}
+    .review-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:18px;font-weight:800;color:#fff;flex:none}
+    .review-card h3{font:800 15px/1.25 var(--body)}
+    .review-card .review-source{font-size:11px;color:#7a7474;margin-top:4px}
+    .review-card .review-stars{color:#e8ab22;letter-spacing:.12em;font-size:19px;margin:0 0 19px;line-height:1}
+    .review-card .quote{font-size:14px;line-height:1.75;font-weight:500;max-width:none;flex:1}
+    .review-card .quote::before{content:'“';color:var(--red);font:900 45px/.7 var(--serif);display:block;margin-bottom:13px}
+    .review-card .review-bottom{padding-top:20px;margin-top:22px;border-top:1px solid #efece9;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#777}
+    .review-card .review-bottom a{font-weight:800;color:var(--red)}
+    .review-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px;margin-top:30px;color:#727075;font-size:12px}
+    .review-footer>a{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:white;font-size:12px;font-weight:800;padding:15px 21px;transition:background .2s}
+    .review-footer>a:hover{background:var(--red-deep)}
+    .reviews-controls{display:none;gap:9px;margin-top:19px}
+    .reviews-controls button{height:42px;width:42px;border:1px solid #ded7d5;background:#fff;color:var(--red);font-size:22px;cursor:pointer;display:grid;place-items:center}
+    .reviews-controls button:hover{border-color:var(--red)}
+    .trust-stars{color:var(--red);font:900 21px/.95 var(--body);letter-spacing:-.11em}
+    @media(max-width:760px){.reviews-intro h2{font-size:clamp(43px,10.6vw,58px)}.reviews-top{align-items:start;flex-direction:column;gap:22px}.google-signal{min-width:0;width:100%;flex-direction:row;justify-content:space-between;align-items:center}.review-cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:1px 0 8px}.review-cards::-webkit-scrollbar{display:none}.review-card{flex:0 0 min(84vw,355px);scroll-snap-align:start;min-height:380px;padding:25px 22px}.reviews-controls{display:flex}.review-footer{align-items:start;flex-direction:column}.review-footer>a{width:100%}.trust-stars{min-width:92px;font-size:22px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.review-cards{scroll-behavior:auto}}
+    .banner{position:relative;background:#18191c;color:white;min-height:475px;display:flex;align-items:center;padding:85px 0}.banner::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0d0e11f3 0%,#121317d9 39%,#15131844 100%),url('assets/banniere-vehicules.webp') center 59%/cover}.banner .wrap{position:relative;width:100%}.banner .kicker{color:#ffa4ad}.banner h2{max-width:640px;margin:21px 0 20px}.banner p{max-width:500px;color:#d7d3d3;margin-bottom:30px;font-size:15px}
+    .contact{background:#fff}.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px}.contact h2{margin:16px 0 22px}.contact .lead{color:var(--muted);max-width:415px;margin-bottom:42px}.contact-details{display:grid;gap:17px}.contact-details a{font-weight:800;color:var(--red);font-size:16px}.contact-details small{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:3px}.form-wrap{background:var(--cream);border:1px solid #e9e6e4;padding:38px}.form-wrap h3{font:800 33px var(--serif);text-transform:uppercase;margin-bottom:9px}.form-wrap>p{color:var(--muted);font-size:12px;margin-bottom:28px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.form-field label{font-size:11px;font-weight:800}.form-field input,.form-field select,.form-field textarea{width:100%;padding:14px 13px;background:#fff;border:1px solid #ddd7d5;outline:none;border-radius:0;font-size:13px}.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--red)}.form-field textarea{resize:vertical;min-height:84px}.form-note{margin:14px 0 0;color:#777;font-size:11px}.form-note a{color:var(--red);text-decoration:underline}
+    footer{padding:48px 0 18px;background:#191a1e;color:#fff}footer .footer-main{display:flex;align-items:start;justify-content:space-between;gap:30px;padding-bottom:48px}.footer-brand img{width:195px}.footer-brand p{color:#c6c4c4;max-width:270px;font-size:12px;margin-top:21px}.footer-links{display:flex;gap:64px}.footer-links h4{font:800 22px var(--serif);text-transform:uppercase;margin:0 0 15px}.footer-links a{display:block;color:#d3d1d1;font-size:12px;margin:10px 0}.footer-links a:hover{color:#fff}.footer-bottom{border-top:1px solid #ffffff24;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;padding-top:18px;color:#999;font-size:11px}.footer-bottom .flag{display:flex;gap:4px;align-items:center}.flag i{display:block;width:17px;height:3px}.flag i:nth-child(1){background:#000;border:1px solid white}.flag i:nth-child(2){background:#ffe000}.flag i:nth-child(3){background:#ef263a}
+    @media(max-width:1040px){.desktop-nav{gap:15px}.services-grid{grid-template-columns:repeat(2,1fr)}.hero-content{padding-left:35px}.hero h1{font-size:clamp(51px,5.5vw,70px)}.featured-content{padding:70px 45px}.contact-grid{gap:45px}}
+    @media(max-width:760px){.wrap{padding:0 21px}header .header-inner{height:70px}.brand img{width:145px}.desktop-nav,.header-cta{display:none}.menu-toggle{display:flex}.mobile-nav{background:#19191d;border-top:1px solid #ffffff24;padding:0 21px 17px;flex-direction:column;gap:0}.mobile-nav.open{display:flex}.mobile-nav a{color:#fff;padding:13px 0;border-bottom:1px solid #ffffff20;font-size:13px;font-weight:700}.hero,.hero-grid{min-height:0}.hero-grid{display:flex;flex-direction:column}.hero-content{padding:59px 22px 48px}.hero h1{font-size:clamp(39px,11vw,49px)}.hero p{font-size:14px;margin:23px 0 27px}.hero-image{height:320px}.hero-image img{object-position:50% 38%}.hero-stamp{left:22px;bottom:20px}.trust .wrap{grid-template-columns:1fr;padding:10px 21px}.trust-item{justify-content:start;padding:17px 0;border-right:0;border-bottom:1px solid #e1dddd}.trust-item:last-child{border-bottom:0}.trust-mark{min-width:92px}.trust-desc{font-size:13px}section{padding:72px 0}.section-head{display:block;margin-bottom:28px}.section-head>p{margin-top:17px}.services-grid{grid-template-columns:1fr 1fr;gap:10px}.service{padding:22px 16px;min-height:245px}.service h3{font-size:26px}.service .arrow{right:16px;top:19px}.service p{font-size:11px}.featured-grid{grid-template-columns:1fr}.featured-photo{min-height:300px}.featured-content{padding:65px 22px}.reasons .reason-grid{grid-template-columns:1fr;gap:33px}.review-cards{grid-template-columns:1fr}.review-card{min-height:180px}.contact-grid{grid-template-columns:1fr;gap:31px}.form-wrap{padding:23px}.banner{min-height:425px;padding:68px 0}.footer-main{flex-direction:column}.footer-links{gap:44px}h2{font-size:clamp(48px,11vw,68px)}}
+    @media(max-width:410px){.services-grid{grid-template-columns:1fr}.service{min-height:200px}.field-row{grid-template-columns:1fr}.hero-buttons .btn{width:100%}.hero h1{font-size:clamp(36px,10.7vw,44px)}.footer-links{flex-direction:column;gap:25px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <div class="announcement">Concept design · prototype interactif · V1</div>
-  <header class="header">
-    <div class="wrap nav">
-      <a href="#accueil" class="brand" aria-label="Belgocar — accueil">BELGO<b>CAR.</b></a>
-      <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
-        <a href="#vehicules">Nos véhicules</a>
-        <a href="#services">Nos services</a>
-        <a href="#concept">L'expérience Belgocar</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="nav-cta" href="#contact">Parlons de votre projet <span aria-hidden="true">↗</span></a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+<div class="topline"></div>
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#accueil" aria-label="Belgocar, accueil"><img src="assets/logo-belgocar.png" alt="Belgocar"></a>
+    <nav class="desktop-nav" aria-label="Navigation principale">
+      <a href="#vehicules">Véhicules</a><a href="#services">Nos services</a><a href="#avis">Avis clients</a><a href="#reprise">Reprise</a>
+    </nav>
+    <a class="header-cta" href="tel:+32470934501">Parlons de votre projet ↗</a>
+    <button class="menu-toggle" type="button" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile"><a href="#vehicules">Véhicules</a><a href="#services">Nos services</a><a href="#avis">Avis clients</a><a href="#reprise">Reprise</a><a href="#contact">Contact</a></nav>
+</header>
+<main>
+  <section class="hero" id="accueil" style="padding:0">
+    <div class="hero-grid">
+      <div class="hero-content"><div class="eyebrow">Belgocar · Votre partenaire automobile</div><h1>Le confort<br><em>d'une</em><br><em>concession.</em><br><span>Les prix d'un<br>indépendant.</span></h1>
+      <p>Achat, entretien, réparation et carrosserie. Un seul interlocuteur pour vous accompagner, du premier essai jusqu'au suivi de votre véhicule.</p>
+      <div class="hero-buttons"><a class="btn btn-white" href="#vehicules">Découvrir nos véhicules <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#services">Nos services <span aria-hidden="true">↗</span></a></div></div>
+      <div class="hero-image"><img src="assets/remise-cles.webp" alt="Remise de clés d'un véhicule" fetchpriority="high"><div class="hero-stamp">Une relation qui dure<strong>Bien au-delà de l'achat.</strong></div></div>
     </div>
-  </header>
-  <main>
-    <section class="hero" id="accueil">
-      <div class="hero-image" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="hero-copy">
-          <div class="eyebrow">Votre univers automobile</div>
-          <h1>La route,<br>en toute <em>confiance.</em></h1>
-          <p>Le confort d’une concession, les prix d’un indépendant. Une autre idée de l'automobile, plus simple, plus humaine et pensée autour de vous.</p>
-          <div class="hero-actions">
-            <a class="btn btn-accent" href="#vehicules">Explorer les véhicules <span aria-hidden="true">↗</span></a>
-            <a class="btn btn-outline" href="#services">Découvrir nos services <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-        <div class="hero-bottom">
-          <div class="hero-counter"><div><strong>01 / 04</strong><span>Une seule adresse</span></div><div><strong>Belgocar</strong><span>Tout roule.</span></div></div>
-          <div class="scroll-cue">Défiler pour explorer ↓</div>
-        </div>
-      </div>
-    </section>
-    <div class="ribbon" aria-label="Domaines d'expertise"><div><i>↗</i> Achat</div><div><i>↗</i> Vente</div><div><i>↗</i> Entretien</div><div><i>↗</i> Réparation</div></div>
-    <section class="section" id="vehicules">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div><div class="eyebrow">Notre sélection</div><h2 class="section-title">Chaque voiture.<br>Le bon choix.</h2></div>
-          <p class="caption">Un aperçu de la façon dont votre futur catalogue automobile pourrait prendre vie. Clair, élégant et facile à parcourir.</p>
-        </div>
-        <div class="filters reveal" role="group" aria-label="Filtrer les véhicules">
-          <button type="button" class="filter active" data-filter="tous" aria-pressed="true">Tous les véhicules</button>
-          <button type="button" class="filter" data-filter="suv" aria-pressed="false">SUV</button>
-          <button type="button" class="filter" data-filter="berline" aria-pressed="false">Berlines</button>
-          <button type="button" class="filter" data-filter="citadine" aria-pressed="false">Citadines</button>
-        </div>
-        <div class="cars-grid">
-          <article class="vehicle reveal" data-type="suv">
-            <div class="vehicle-art"><img loading="lazy" src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80" alt="Automobile SUV — photographie d'illustration"><span class="sample">Visuel de démonstration</span></div>
-            <div class="vehicle-info"><p class="vehicle-category">SUV · Exemple de fiche</p><h3>SUV contemporain</h3><div class="vehicle-meta"><span>Polyvalent</span><span>Confort</span><span>Design</span></div><div class="vehicle-footer"><strong>Prix sur demande</strong><button class="link-arrow" type="button" data-vehicle="SUV contemporain">Voir le concept ↗</button></div></div>
-          </article>
-          <article class="vehicle reveal" data-type="berline">
-            <div class="vehicle-art"><img loading="lazy" src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=80" alt="Berline automobile — photographie d'illustration"><span class="sample">Visuel de démonstration</span></div>
-            <div class="vehicle-info"><p class="vehicle-category">Berline · Exemple de fiche</p><h3>Berline signature</h3><div class="vehicle-meta"><span>Élégance</span><span>Technologie</span><span>Confort</span></div><div class="vehicle-footer"><strong>Prix sur demande</strong><button class="link-arrow" type="button" data-vehicle="Berline signature">Voir le concept ↗</button></div></div>
-          </article>
-          <article class="vehicle reveal" data-type="citadine">
-            <div class="vehicle-art"><img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80" alt="Automobile citadine — photographie d'illustration"><span class="sample">Visuel de démonstration</span></div>
-            <div class="vehicle-info"><p class="vehicle-category">Citadine · Exemple de fiche</p><h3>Citadine urbaine</h3><div class="vehicle-meta"><span>Agilité</span><span>Économie</span><span>Style</span></div><div class="vehicle-footer"><strong>Prix sur demande</strong><button class="link-arrow" type="button" data-vehicle="Citadine urbaine">Voir le concept ↗</button></div></div>
-          </article>
-        </div>
-        <p class="note">Les images, catégories et fiches ci-dessus sont fictives : elles illustrent seulement le design envisagé.</p>
-      </div>
-    </section>
-    <section class="section services" id="services">
-      <div class="wrap">
-        <div class="section-head reveal"><div><div class="eyebrow">Votre partenaire automobile</div><h2 class="section-title">Bien plus qu'un<br>simple garage.</h2></div><p class="caption">Une expérience fluide, de la recherche du véhicule à son suivi au quotidien.</p></div>
-        <div class="services-grid">
-          <div class="service reveal"><span class="service-count">01 / ACHAT</span><div><h3>Trouver votre<br>prochaine voiture.</h3><p>Une sélection et un accompagnement adaptés à vos besoins.</p></div></div>
-          <div class="service reveal"><span class="service-count">02 / VENTE</span><div><h3>Vendre plus<br>sereinement.</h3><p>Un parcours simple et transparent, à chaque étape.</p></div></div>
-          <div class="service reveal"><span class="service-count">03 / ENTRETIEN</span><div><h3>Continuer à<br>rouler tranquille.</h3><p>Prendre soin de votre voiture sur le long terme.</p></div></div>
-          <div class="service reveal"><span class="service-count">04 / RÉPARATION</span><div><h3>Des solutions<br>qui avancent.</h3><p>Un interlocuteur pour vos besoins mécaniques.</p></div></div>
-        </div>
-      </div>
-    </section>
-    <section class="signature" id="concept">
-      <div class="wrap signature-inner">
-        <div class="reveal"><div class="eyebrow">L'esprit Belgocar</div><h2>Une vraie relation.<br><em>Pas juste une vente.</em></h2><p>Chez Belgocar, le service ne s’arrête pas à la remise des clés. Notre ambition : rassembler vos besoins automobiles dans une expérience simple, claire et accessible.</p><a class="btn btn-accent" href="#contact" style="margin-top:22px">Échanger avec nous ↗</a></div>
-        <div class="signature-visual reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1200&q=80" alt="Automobile — visuel d'ambiance"><span class="stamp">BelgoCar — Tout roule.</span></div>
-      </div>
-    </section>
-    <section class="contact" id="contact"><div class="wrap contact-inner"><div><div class="eyebrow">Prenons la route ensemble</div><h2>Votre prochain<br>chapitre commence ici.</h2></div><div><p>Un projet d'achat, de vente ou une question ? Imaginez ici un point de contact aussi simple que votre expérience Belgocar.</p><button class="btn btn-dark" type="button" id="contactBtn">Nous contacter ↗</button></div></div></section>
-  </main>
-  <footer class="footer"><div class="wrap"><div class="footer-top"><div><a href="#accueil" class="brand">BELGO<b>CAR.</b></a><p>Le confort d’une concession. Les prix d’un indépendant.</p></div><nav class="footer-links" aria-label="Navigation de bas de page"><a href="#vehicules">Véhicules</a><a href="#services">Services</a><a href="#concept">À propos</a><a href="#contact">Contact</a></nav></div><div class="footer-bottom"><span>© Belgocar · Prototype de présentation V1.</span><span>Design concept — à valider avec votre designer.</span></div></div></footer>
-  <dialog class="modal" id="demoModal" aria-labelledby="modalTitle"><div class="modal-content"><div class="modal-header"><div class="eyebrow">Prototype interactif</div><button class="modal-close" id="closeModal" type="button" aria-label="Fermer">×</button></div><h2 id="modalTitle">Fonctionnalité de démonstration</h2><p id="modalText">Ce bouton illustre une future fonctionnalité. Aucune donnée n'est envoyée et aucune demande réelle n'est enregistrée.</p><button type="button" class="btn btn-dark" id="okModal">Compris ↗</button></div></dialog>
-  <script>
-    const navLinks = document.getElementById('navLinks');
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn.addEventListener('click', () => { const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open)); menuBtn.textContent=open?'×':'☰'; });
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}));
-    document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false')});button.classList.add('active');button.setAttribute('aria-pressed','true');const type=button.dataset.filter;document.querySelectorAll('.vehicle').forEach(card=>card.hidden=!(type==='tous'||card.dataset.type===type));}));
-    const modal=document.getElementById('demoModal');const modalTitle=document.getElementById('modalTitle');const modalText=document.getElementById('modalText');
-    function openDemo(title,message){modalTitle.textContent=title;modalText.textContent=message;modal.showModal();document.body.classList.add('modal-open')}
-    function closeDemo(){modal.close();document.body.classList.remove('modal-open')}
-    document.querySelectorAll('[data-vehicle]').forEach(button=>button.addEventListener('click',()=>openDemo(button.dataset.vehicle,'Cette fiche est un exemple. Dans la version finale, ce bouton pourra ouvrir une page véhicule avec galerie photos, caractéristiques, prix et demande de rendez-vous.')));
-    document.getElementById('contactBtn').addEventListener('click',()=>openDemo('Prendre contact avec Belgocar','Cette zone est une simulation pour le designer. Le formulaire ou le lien WhatsApp pourra être branché lors du développement final.'));
-    document.getElementById('closeModal').addEventListener('click',closeDemo);document.getElementById('okModal').addEventListener('click',closeDemo);modal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
-    const seen=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');seen.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>seen.observe(el));
-  </script>
+  </section>
+  <div class="trust"><div class="wrap">
+    <div class="trust-item"><div class="trust-mark trust-stars" aria-label="5 étoiles">★★★★★</div><div class="trust-desc">Avis clients sur Google <small>3 témoignages 5 étoiles présentés ci-dessous</small></div></div>
+    <div class="trust-item"><div class="trust-mark">01</div><div class="trust-desc">Interlocuteur unique <small>De la vente à l'après-vente</small></div></div>
+    <div class="trust-item"><div class="trust-mark">A→Z</div><div class="trust-desc">Un service automobile complet <small>Vente · Atelier · Carrosserie</small></div></div>
+  </div></div>
+  <section id="services"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">Une solution, pas seulement une voiture</div><h2>Un garage.<br>Tous vos besoins.</h2></div><p>Chez Belgocar, notre rôle ne s'arrête pas à la remise des clés. Nous restons votre point de contact pour la suite.</p></div>
+    <div class="services-grid">
+      <article class="service"><div class="number">01</div><span class="arrow">↗</span><svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l3-9h18l3 9v7h-4v-3H8v3H4v-7zm3-9 3-4h12l3 4M6 20h20M9 20v-3m14 3v-3"/></svg><h3>Vente de véhicules</h3><p>Découvrez nos véhicules d'occasion multimarques et trouvez celui qui vous correspond.</p></article>
+      <article class="service"><div class="number">02</div><span class="arrow">↗</span><svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 5a8 8 0 0 0-9 10L4 23l5 5 8-8a8 8 0 0 0 10-9l-5 5-5-5z"/></svg><h3>Entretien & mécanique</h3><p>Un atelier pour prendre soin de votre véhicule et assurer son suivi.</p></article>
+      <article class="service"><div class="number">03</div><span class="arrow">↗</span><svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h20v16H6zM6 13h20M12 8v16m8-16v16"/><path d="M10 4v4m12-4v4m-12 20v-4m12 4v-4"/></svg><h3>Carrosserie</h3><p>Des solutions pour les réparations de carrosserie, y compris après un sinistre.</p></article>
+      <article class="service"><div class="number">04</div><span class="arrow">↗</span><svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 3 27 9v8c0 7-5 10-11 12C10 27 5 24 5 17V9zM10 16l4 4 8-9"/></svg><h3>Accompagnement</h3><p>Des conseils et un interlocuteur de confiance tout au long de votre parcours.</p></article>
+    </div>
+  </div></section>
+  <section class="featured" id="vehicules"><div class="featured-grid"><div class="featured-photo"><img src="assets/banniere-vehicules.webp" loading="lazy" alt="Gamme de véhicules exposés"></div><div class="featured-content"><div class="kicker">Votre prochaine voiture</div><h2>La bonne voiture.<br>Le bon service.</h2><p>Parcourez la sélection actuelle de Belgocar sur AutoScout24. Citadine, berline ou véhicule familial : trouvez une occasion adaptée à votre quotidien.</p><a class="btn btn-white" href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener">Voir les véhicules disponibles ↗</a><p class="micro">Les annonces et les prix sont mis à jour sur AutoScout24.</p></div></div></section>
+  <section class="reviews" id="avis" aria-labelledby="avis-title"><div class="wrap">
+    <div class="reviews-top">
+      <div class="reviews-intro"><div class="kicker">Des clients qui parlent de nous</div><h2 id="avis-title">Votre confiance.<br>Notre plus belle publicité.</h2><p class="reviews-sub">Une sélection de témoignages Google qui reflètent ce que nous cherchons à offrir : une expérience simple, humaine et fiable.</p></div>
+      <div class="google-signal" aria-label="Avis Google"><div class="google-word" aria-hidden="true"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div><small>3 avis 5 étoiles sélectionnés</small></div>
+    </div>
+    <div class="review-scroller"><div class="review-cards" id="reviewCards" aria-label="Témoignages Google de Belgocar"><article class="review-card" aria-label="Avis Google 5 étoiles de Soufiane Az"><div class="review-header"><div class="review-avatar" style="background:#426f36" aria-hidden="true">S</div><div><h3>Soufiane Az</h3><div class="review-source">Avis publié sur Google</div></div></div><div class="review-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div><p class="quote">J’ai acheté une voiture chez BelgoCar et tout s’est très bien passé. Le véhicule était propre, la livraison rapide et ils se sont montrés flexibles pour convenir d’un moment qui m’arrangeait. Des commerçants fiables que je recommande !</p><div class="review-bottom"><span>★★★★★ · Google</span><a href="https://share.google/ILrRMi8K4Id0xyxyQ" target="_blank" rel="noopener noreferrer" aria-label="Voir les avis Google de Belgocar">Voir la source ↗</a></div></article>
+<article class="review-card" aria-label="Avis Google 5 étoiles de Nsagency"><div class="review-header"><div class="review-avatar" style="background:#702e9d" aria-hidden="true">N</div><div><h3>Nsagency</h3><div class="review-source">Avis publié sur Google</div></div></div><div class="review-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div><p class="quote">Je suis plus que satisfaite de l’achat de mon véhicule, tout était fluide de la prise de rdv à la réception de mon véhicule. Ce sont des personnes sérieuses et très aimables, je recommande les yeux fermés ! Merci encore !</p><div class="review-bottom"><span>★★★★★ · Google</span><a href="https://share.google/ILrRMi8K4Id0xyxyQ" target="_blank" rel="noopener noreferrer" aria-label="Voir les avis Google de Belgocar">Voir la source ↗</a></div></article>
+<article class="review-card" aria-label="Avis Google 5 étoiles de H-auto solution"><div class="review-header"><div class="review-avatar" style="background:#c33130" aria-hidden="true">H</div><div><h3>H-auto solution</h3><div class="review-source">Avis publié sur Google</div></div></div><div class="review-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div><p class="quote">Top partenaire. !</p><div class="review-bottom"><span>★★★★★ · Google</span><a href="https://share.google/ILrRMi8K4Id0xyxyQ" target="_blank" rel="noopener noreferrer" aria-label="Voir les avis Google de Belgocar">Voir la source ↗</a></div></article></div></div>
+    <div class="reviews-controls" aria-label="Navigation entre les avis"><button type="button" id="reviewsPrev" aria-label="Avis précédent">←</button><button type="button" id="reviewsNext" aria-label="Avis suivant">→</button></div>
+    <div class="review-footer"><span>Extraits reproduits d'après des captures des avis Google, octobre 2026.</span><a href="https://share.google/ILrRMi8K4Id0xyxyQ" target="_blank" rel="noopener noreferrer">Voir tous les avis sur Google ↗</a></div>
+  </div></section>
+  <section class="reasons"><div class="wrap reason-grid"><div><div class="kicker">Notre différence</div><h2>Moins d'étapes.<br>Plus de sérénité.</h2><p class="intro">Vous ne cherchez pas uniquement un prix. Vous voulez une expérience fluide et une équipe qui reste disponible quand vous en avez besoin.</p></div><div class="reason-list"><div class="reason-row"><div class="reason-index">01</div><div><h3>Une prise en charge complète</h3><p>Vente, atelier et carrosserie réunis autour de votre véhicule.</p></div></div><div class="reason-row"><div class="reason-index">02</div><div><h3>Une relation simple</h3><p>Un point de contact unique plutôt qu'une succession d'intermédiaires.</p></div></div><div class="reason-row"><div class="reason-index">03</div><div><h3>Une équipe proche de Bruxelles</h3><p>Un service accessible aux automobilistes de Bruxelles et des environs.</p></div></div></div></div></section>
+
+  <section class="banner"><div class="wrap"><div class="kicker">Bienvenue chez Belgocar</div><h2>Plus qu'un vendeur.<br>Un partenaire automobile.</h2><p>Votre achat n'est que le début de notre relation. Découvrez ce que change une prise en charge complète.</p><a class="btn btn-white" href="#contact">Échanger avec Belgocar ↗</a></div></section>
+  <section class="contact" id="reprise"><div class="wrap contact-grid"><div id="contact"><div class="kicker">On en parle ?</div><h2>Votre projet<br>commence ici.</h2><p class="lead">Un véhicule à acheter, un véhicule à reprendre ou une question sur nos services ? Contactez directement Belgocar.</p><div class="contact-details"><div><small>Téléphone</small><a href="tel:+32470934501">0470 93 45 01 ↗</a></div><div><small>Email</small><a href="mailto:info@belgocar.be">info@belgocar.be ↗</a></div><div><small>Véhicules disponibles</small><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener">Voir les annonces AutoScout24 ↗</a></div></div></div><div class="form-wrap"><h3>Parlons de votre véhicule</h3><p>Ce formulaire de démonstration ouvre votre application e-mail. Aucun envoi automatique ni stockage de données n'est configuré.</p><form id="contactForm"><div class="field-row"><div class="form-field"><label for="fname">Prénom</label><input id="fname" name="prenom" autocomplete="given-name" placeholder="Votre prénom" required></div><div class="form-field"><label for="lname">Nom</label><input id="lname" name="nom" autocomplete="family-name" placeholder="Votre nom" required></div></div><div class="field-row"><div class="form-field"><label for="email">Adresse e-mail</label><input type="email" id="email" name="email" autocomplete="email" placeholder="votre@email.com" required></div><div class="form-field"><label for="topic">Votre demande</label><select id="topic" name="objet"><option>Je cherche un véhicule</option><option>Je souhaite vendre / faire reprendre mon véhicule</option><option>Entretien ou réparation</option><option>Autre question</option></select></div></div><div class="form-field"><label for="message">Votre message</label><textarea id="message" name="message" placeholder="Dites-nous en quelques mots ce que vous recherchez..." required></textarea></div><button type="submit" class="btn btn-red">Préparer mon e-mail ↗</button><p class="form-note">Prototype : aucun message n'est expédié directement depuis ce site.</p></form></div></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-main"><div class="footer-brand"><img src="assets/logo-belgocar.png" alt="Belgocar"><p>Le confort d'une concession, les prix d'un indépendant. Vente, entretien et carrosserie.</p></div><div class="footer-links"><div><h4>Explorer</h4><a href="#vehicules">Nos véhicules</a><a href="#services">Nos services</a><a href="#avis">Avis clients</a><a href="#reprise">Reprise</a></div><div><h4>Nous contacter</h4><a href="tel:+32470934501">0470 93 45 01</a><a href="mailto:info@belgocar.be">info@belgocar.be</a><a href="https://www.belgocar.be/" target="_blank" rel="noopener">Belgocar.be</a></div></div></div><div class="footer-bottom"><span>© <span id="year"></span> Belgocar. Prototype de présentation.</span><span class="flag"><i></i><i></i><i></i> Automotive, made simple.</span></div></div></footer>
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const mb=document.getElementById('menuButton'),mn=document.getElementById('mobileNav');
+  mb.addEventListener('click',()=>{const open=mn.classList.toggle('open');mb.setAttribute('aria-expanded',String(open));mb.textContent=open?'×':'☰';});
+  mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mn.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='☰';}));
+  const reviewTrack=document.getElementById('reviewCards');
+  function moveReviews(direction){const first=reviewTrack.querySelector('.review-card');if(!first)return;const step=first.getBoundingClientRect().width+12;reviewTrack.scrollBy({left:step*direction,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+  document.getElementById('reviewsPrev').addEventListener('click',()=>moveReviews(-1));
+  document.getElementById('reviewsNext').addEventListener('click',()=>moveReviews(1));
+  document.getElementById('contactForm').addEventListener('submit',(e)=>{e.preventDefault();const d=new FormData(e.currentTarget);const subject='Demande Belgocar : '+d.get('objet');const body=`Bonjour Belgocar,\n\n${d.get('message')}\n\n${d.get('prenom')} ${d.get('nom')}\n${d.get('email')}`;window.location.href='mailto:info@belgocar.be?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);});
+</script>
 </body>
 </html>
