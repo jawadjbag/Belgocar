@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141716">
+  <meta name="description" content="Prototype du futur site vitrine Belgocar — sélection automobile et accompagnement.">
+  <title>Belgocar — Tout roule.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#161a19;--ink2:#242826;--sand:#f7f7f3;--muted:#6b706b;--border:#e7e9e3;--accent:#ddfa69;--white:#fff;--radius:18px;}
+    * {box-sizing:border-box} html {scroll-behavior:smooth} body {margin:0;background:var(--sand);color:var(--ink);font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased} body.modal-open {overflow:hidden}
+    a {text-decoration:none;color:inherit} button,input,textarea {font:inherit} button {cursor:pointer} button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible {outline:3px solid #83992a;outline-offset:3px}
+    .wrap {width:min(1370px,calc(100% - 76px));margin-inline:auto}
+    .eyebrow {font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:13px}.eyebrow:before {content:'';width:25px;height:2px;background:currentColor}
+    .announcement {height:33px;display:flex;align-items:center;justify-content:center;background:#dbf973;color:#151914;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    .header {height:83px;display:flex;align-items:center;position:absolute;top:33px;left:0;right:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.20);color:white}
+    .nav {display:flex;align-items:center;justify-content:space-between;width:100%}
+    .brand {font-family:Manrope,sans-serif;font-size:25px;font-weight:800;letter-spacing:-.07em;white-space:nowrap}.brand b {color:var(--accent);font-weight:800}
+    .nav-links {display:flex;gap:35px;align-items:center}.nav-links a {font-size:12px;font-weight:700;opacity:.87;transition:opacity .2s}.nav-links a:hover{opacity:1}
+    .nav-cta {display:inline-flex;gap:22px;align-items:center;padding:14px 18px;background:#fff;color:#131615;font-size:11px;font-weight:800;border-radius:4px;transition:background .2s}.nav-cta:hover{background:var(--accent)}
+    .menu-btn {display:none;background:transparent;border:0;color:#fff;font-size:26px}
+    .hero {position:relative;min-height:690px;height:min(860px,calc(100svh - 33px));background:#1c2524;color:white;display:flex;align-items:center;overflow:hidden}
+    .hero-image {position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,14,.94) 0%,rgba(10,15,14,.79) 35%,rgba(10,15,14,.33) 70%,rgba(10,15,14,.27) 100%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=85') center/cover no-repeat;transform:scale(1.015);animation:zoomOut 1.5s ease-out both}
+    .hero-image::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,13,12,.6),transparent 40%)}
+    @keyframes zoomOut{from{transform:scale(1.09);filter:brightness(.7)}to{transform:scale(1.015);filter:brightness(1)}}
+    .hero .wrap {position:relative;z-index:1;padding-top:76px}
+    .hero-copy {max-width:770px}
+    .hero .eyebrow {color:var(--accent);margin-bottom:27px}
+    .hero h1 {font-family:Manrope,sans-serif;font-size:clamp(48px,6.8vw,105px);line-height:1.055;font-weight:700;letter-spacing:-.075em;margin:0 0 25px}
+    .hero h1 em {font-style:normal;color:var(--accent)}
+    .hero p {font-size:15px;color:rgba(255,255,255,.75);line-height:1.75;max-width:440px;margin:0 0 34px}
+    .btn {border:1px solid transparent;display:inline-flex;justify-content:center;align-items:center;gap:22px;font-weight:800;font-size:12px;padding:18px 22px;border-radius:5px;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)} .btn-accent {background:var(--accent);color:var(--ink)} .btn-outline{border-color:rgba(255,255,255,.5);color:white;background:transparent} .btn-dark{background:var(--ink);color:white}
+    .hero-actions {display:flex;flex-wrap:wrap;gap:12px}
+    .hero-bottom {display:flex;justify-content:space-between;align-items:flex-end;gap:25px;position:absolute;bottom:37px;left:0;right:0}
+    .hero-counter {display:flex;gap:55px}.hero-counter span {font-size:10px;color:rgba(255,255,255,.58);letter-spacing:.15em;text-transform:uppercase}.hero-counter strong{display:block;font-size:19px;color:white;letter-spacing:-.02em;margin-bottom:5px}
+    .scroll-cue {font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.18em;white-space:nowrap}
+    .ribbon {background:var(--ink);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);padding:0 max(38px,calc((100% - 1294px)/2));border-top:1px solid #414643}
+    .ribbon div {padding:23px 18px;border-right:1px solid #343a37;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:center;align-items:center;gap:15px}.ribbon div:last-child{border:0}.ribbon i{font-style:normal;color:var(--accent);font-size:20px;font-weight:400}
+    section {scroll-margin-top:30px}.section {padding:112px 0}.section-head {display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:38px}.section-head .eyebrow {color:#5c645e;margin-bottom:17px}.section-title{font-family:Manrope,sans-serif;font-size:clamp(34px,4.2vw,62px);letter-spacing:-.065em;line-height:1.08;margin:0;font-weight:750}.section-head .caption{max-width:330px;color:#777e78;font-size:14px;line-height:1.7;margin-bottom:4px}
+    .filters {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}.filter {border:1px solid #d9ddd5;border-radius:5px;background:transparent;padding:12px 18px;font-size:12px;font-weight:750;color:#646b64}.filter.active,.filter:hover {background:var(--ink);color:#fff;border-color:var(--ink)}
+    .cars-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.vehicle {background:white;border:1px solid var(--border);min-width:0;transition:transform .2s,box-shadow .2s}.vehicle:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(14,26,15,.09)}.vehicle[hidden]{display:none}
+    .vehicle-art {aspect-ratio:1.35;position:relative;overflow:hidden;background:#e4e7e3}.vehicle-art img {width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.vehicle:hover img{transform:scale(1.045)}.vehicle-art:before {content:'';position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),transparent 35%)}
+    .vehicle-art .sample {position:absolute;z-index:2;top:17px;left:17px;padding:8px 11px;background:#fff;color:#333;font-size:9px;letter-spacing:.1em;font-weight:800;text-transform:uppercase}
+    .vehicle-info {padding:24px 24px 22px}.vehicle-category {font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#8a9386;font-weight:800;margin:0 0 10px}.vehicle-info h3{font:700 25px/1.2 Manrope,sans-serif;letter-spacing:-.05em;margin:0 0 15px}.vehicle-meta{display:flex;gap:16px;color:#7a8179;font-size:12px;margin-bottom:22px;flex-wrap:wrap}.vehicle-footer{border-top:1px solid #ebece8;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.vehicle-footer strong{font-size:13px}.link-arrow{border:0;background:transparent;color:#1e2420;font-size:12px;font-weight:800;display:flex;gap:9px;align-items:center}
+    .note {display:flex;gap:10px;align-items:center;color:#848c83;font-size:11px;margin:19px 0 0}.note:before {content:'ⓘ';font-size:15px}
+    .services {background:#ecefe9}.services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.service {position:relative;min-height:285px;background:#fff;padding:30px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid #e5e8e0}.service:after{content:'';position:absolute;right:-65px;top:-65px;width:155px;height:155px;border:1px solid #e6ebe2;border-radius:100%;box-shadow:0 0 0 35px #f7f9f5}.service-count {font-size:11px;font-weight:800;letter-spacing:.12em;color:#98a095;z-index:1}.service h3 {font:750 24px/1.15 Manrope,sans-serif;letter-spacing:-.05em;margin:0 0 12px;z-index:1;position:relative}.service p {color:#777e76;font-size:12px;line-height:1.65;margin:0;position:relative;z-index:1}
+    .signature {background:#151a18;color:white;overflow:hidden}.signature-inner{display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center;min-height:540px}.signature .eyebrow{color:var(--accent)}.signature h2{font:750 clamp(39px,4.6vw,69px)/1.12 Manrope,sans-serif;letter-spacing:-.066em;margin:30px 0}.signature h2 em{font-style:normal;color:var(--accent)}.signature p{color:#a7afa9;line-height:1.85;font-size:14px;max-width:430px}
+    .signature-visual {min-height:430px;background:linear-gradient(145deg,#242e2a,#141917);position:relative;overflow:hidden;border-radius:3px}.signature-visual img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block;filter:brightness(.75)}.signature-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,18,16,.78))}.signature-visual .stamp{z-index:2;position:absolute;bottom:28px;left:30px;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800}
+    .contact {padding:115px 0;background:var(--accent)}.contact-inner {display:flex;justify-content:space-between;align-items:end;gap:30px}.contact .eyebrow{color:#2b3323}.contact h2{font:800 clamp(45px,6.4vw,88px)/1.05 Manrope,sans-serif;letter-spacing:-.075em;margin:24px 0 0}.contact p {max-width:320px;font-size:14px;line-height:1.7;color:#39432e}
+    .footer {background:#131715;color:#fff;padding:50px 0 27px}.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:45px;border-bottom:1px solid #303733}.footer .brand{font-size:30px}.footer p {color:#8f9991;font-size:12px;margin:16px 0 0}.footer-links {display:flex;gap:30px;font-size:12px;color:#bbc3bb}.footer-bottom {display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:25px;font-size:11px;color:#89948b}
+    .modal {border:0;padding:0;max-width:470px;width:calc(100% - 30px);box-shadow:0 30px 100px rgba(0,0,0,.3)}.modal::backdrop {background:rgba(7,13,9,.75);backdrop-filter:blur(5px)}.modal-content{padding:35px}.modal-header{display:flex;justify-content:space-between;gap:10px;align-items:start}.modal h2{font:800 29px/1.2 Manrope,sans-serif;letter-spacing:-.05em;margin:8px 0 15px}.modal p{font-size:14px;line-height:1.7;color:#687067}.modal-close{border:0;background:#eef0eb;width:34px;height:34px;font-size:23px;line-height:1}.modal .btn{margin-top:20px}
+    .reveal {opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){.wrap{width:calc(100% - 44px)}.nav-links{gap:17px}.nav-links a{font-size:11px}.hero h1{font-size:clamp(52px,8.5vw,85px)}.services-grid{grid-template-columns:repeat(2,1fr)}.cars-grid{grid-template-columns:repeat(2,1fr)}.signature-inner{gap:25px}}
+    @media(max-width:650px){.wrap{width:calc(100% - 34px)}.announcement{font-size:9px}.header{height:70px}.brand{font-size:23px}.nav-cta{display:none}.menu-btn{display:block}.nav-links{position:absolute;left:0;right:0;top:70px;display:none;flex-direction:column;align-items:stretch;gap:0;background:#171c1a;padding:15px 20px 25px;border-bottom:1px solid #3a403b}.nav-links.open{display:flex}.nav-links a{padding:13px 0;font-size:14px}.hero{height:auto;min-height:760px}.hero-image{background-position:58% center}.hero .wrap{padding-top:105px;padding-bottom:142px}.hero h1{font-size:clamp(49px,11vw,73px)}.hero p{font-size:13px}.hero-bottom{bottom:24px}.hero-counter{gap:24px}.hero-counter strong{font-size:15px}.scroll-cue{display:none}.ribbon{grid-template-columns:repeat(2,1fr);padding:0 10px}.ribbon div{font-size:10px;padding:17px 12px}.ribbon div:nth-child(2){border-right:0}.ribbon div:nth-child(-n+2){border-bottom:1px solid #343a37}.section{padding:72px 0}.section-head{display:block}.section-head .caption{margin-top:18px}.cars-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr;gap:9px}.service{min-height:230px;padding:20px}.service h3{font-size:22px}.service p{font-size:11px}.signature-inner{grid-template-columns:1fr;padding:74px 0;gap:30px}.signature-visual,.signature-visual img{min-height:320px}.contact{padding:75px 0}.contact-inner{display:block}.contact-inner .btn{margin-top:17px}.footer-links{flex-wrap:wrap;gap:18px}}
+    @media(max-width:390px){.services-grid{grid-template-columns:1fr}.hero-actions .btn{width:100%}.hero h1{font-size:47px}.hero-counter{gap:13px}.hero-counter span{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-image{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+</head>
+<body>
+  <div class="announcement">Concept design · prototype interactif · V1</div>
+  <header class="header">
+    <div class="wrap nav">
+      <a href="#accueil" class="brand" aria-label="Belgocar — accueil">BELGO<b>CAR.</b></a>
+      <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+        <a href="#vehicules">Nos véhicules</a>
+        <a href="#services">Nos services</a>
+        <a href="#concept">L'expérience Belgocar</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Parlons de votre projet <span aria-hidden="true">↗</span></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero-copy">
+          <div class="eyebrow">Votre univers automobile</div>
+          <h1>La route,<br>en toute <em>confiance.</em></h1>
+          <p>Le confort d’une concession, les prix d’un indépendant. Une autre idée de l'automobile, plus simple, plus humaine et pensée autour de vous.</p>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="#vehicules">Explorer les véhicules <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline" href="#services">Découvrir nos services <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <div class="hero-counter"><div><strong>01 / 04</strong><span>Une seule adresse</span></div><div><strong>Belgocar</strong><span>Tout roule.</span></div></div>
+          <div class="scroll-cue">Défiler pour explorer ↓</div>
+        </div>
+      </div>
+    </section>
+    <div class="ribbon" aria-label="Domaines d'expertise"><div><i>↗</i> Achat</div><div><i>↗</i> Vente</div><div><i>↗</i> Entretien</div><div><i>↗</i> Réparation</div></div>
+    <section class="section" id="vehicules">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">Notre sélection</div><h2 class="section-title">Chaque voiture.<br>Le bon choix.</h2></div>
+          <p class="caption">Un aperçu de la façon dont votre futur catalogue automobile pourrait prendre vie. Clair, élégant et facile à parcourir.</p>
+        </div>
+        <div class="filters reveal" role="group" aria-label="Filtrer les véhicules">
+          <button type="button" class="filter active" data-filter="tous" aria-pressed="true">Tous les véhicules</button>
+          <button type="button" class="filter" data-filter="suv" aria-pressed="false">SUV</button>
+          <button type="button" class="filter" data-filter="berline" aria-pressed="false">Berlines</button>
+          <button type="button" class="filter" data-filter="citadine" aria-pressed="false">Citadines</button>
+        </div>
+        <div class="cars-grid">
+          <article class="vehicle reveal" data-type="suv">
+            <div class="vehicle-art"><img loading="lazy" src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80" alt="Automobile SUV — photographie d'illustration"><span class="sample">Visuel de démonstration</span></div>
+            <div class="vehicle-info"><p class="vehicle-category">SUV · Exemple de fiche</p><h3>SUV contemporain</h3><div class="vehicle-meta"><span>Polyvalent</span><span>Confort</span><span>Design</span></div><div class="vehicle-footer"><strong>Prix sur demande</strong><button class="link-arrow" type="button" data-vehicle="SUV contemporain">Voir le concept ↗</button></div></div>
+          </article>
+          <article class="vehicle reveal" data-type="berline">
+            <div class="vehicle-art"><img loading="lazy" src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=80" alt="Berline automobile — photographie d'illustration"><span class="sample">Visuel de démonstration</span></div>
+            <div class="vehicle-info"><p class="vehicle-category">Berline · Exemple de fiche</p><h3>Berline signature</h3><div class="vehicle-meta"><span>Élégance</span><span>Technologie</span><span>Confort</span></div><div class="vehicle-footer"><strong>Prix sur demande</strong><button class="link-arrow" type="button" data-vehicle="Berline signature">Voir le concept ↗</button></div></div>
+          </article>
+          <article class="vehicle reveal" data-type="citadine">
+            <div class="vehicle-art"><img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80" alt="Automobile citadine — photographie d'illustration"><span class="sample">Visuel de démonstration</span></div>
+            <div class="vehicle-info"><p class="vehicle-category">Citadine · Exemple de fiche</p><h3>Citadine urbaine</h3><div class="vehicle-meta"><span>Agilité</span><span>Économie</span><span>Style</span></div><div class="vehicle-footer"><strong>Prix sur demande</strong><button class="link-arrow" type="button" data-vehicle="Citadine urbaine">Voir le concept ↗</button></div></div>
+          </article>
+        </div>
+        <p class="note">Les images, catégories et fiches ci-dessus sont fictives : elles illustrent seulement le design envisagé.</p>
+      </div>
+    </section>
+    <section class="section services" id="services">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">Votre partenaire automobile</div><h2 class="section-title">Bien plus qu'un<br>simple garage.</h2></div><p class="caption">Une expérience fluide, de la recherche du véhicule à son suivi au quotidien.</p></div>
+        <div class="services-grid">
+          <div class="service reveal"><span class="service-count">01 / ACHAT</span><div><h3>Trouver votre<br>prochaine voiture.</h3><p>Une sélection et un accompagnement adaptés à vos besoins.</p></div></div>
+          <div class="service reveal"><span class="service-count">02 / VENTE</span><div><h3>Vendre plus<br>sereinement.</h3><p>Un parcours simple et transparent, à chaque étape.</p></div></div>
+          <div class="service reveal"><span class="service-count">03 / ENTRETIEN</span><div><h3>Continuer à<br>rouler tranquille.</h3><p>Prendre soin de votre voiture sur le long terme.</p></div></div>
+          <div class="service reveal"><span class="service-count">04 / RÉPARATION</span><div><h3>Des solutions<br>qui avancent.</h3><p>Un interlocuteur pour vos besoins mécaniques.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="signature" id="concept">
+      <div class="wrap signature-inner">
+        <div class="reveal"><div class="eyebrow">L'esprit Belgocar</div><h2>Une vraie relation.<br><em>Pas juste une vente.</em></h2><p>Chez Belgocar, le service ne s’arrête pas à la remise des clés. Notre ambition : rassembler vos besoins automobiles dans une expérience simple, claire et accessible.</p><a class="btn btn-accent" href="#contact" style="margin-top:22px">Échanger avec nous ↗</a></div>
+        <div class="signature-visual reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1200&q=80" alt="Automobile — visuel d'ambiance"><span class="stamp">BelgoCar — Tout roule.</span></div>
+      </div>
+    </section>
+    <section class="contact" id="contact"><div class="wrap contact-inner"><div><div class="eyebrow">Prenons la route ensemble</div><h2>Votre prochain<br>chapitre commence ici.</h2></div><div><p>Un projet d'achat, de vente ou une question ? Imaginez ici un point de contact aussi simple que votre expérience Belgocar.</p><button class="btn btn-dark" type="button" id="contactBtn">Nous contacter ↗</button></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><div class="footer-top"><div><a href="#accueil" class="brand">BELGO<b>CAR.</b></a><p>Le confort d’une concession. Les prix d’un indépendant.</p></div><nav class="footer-links" aria-label="Navigation de bas de page"><a href="#vehicules">Véhicules</a><a href="#services">Services</a><a href="#concept">À propos</a><a href="#contact">Contact</a></nav></div><div class="footer-bottom"><span>© Belgocar · Prototype de présentation V1.</span><span>Design concept — à valider avec votre designer.</span></div></div></footer>
+  <dialog class="modal" id="demoModal" aria-labelledby="modalTitle"><div class="modal-content"><div class="modal-header"><div class="eyebrow">Prototype interactif</div><button class="modal-close" id="closeModal" type="button" aria-label="Fermer">×</button></div><h2 id="modalTitle">Fonctionnalité de démonstration</h2><p id="modalText">Ce bouton illustre une future fonctionnalité. Aucune donnée n'est envoyée et aucune demande réelle n'est enregistrée.</p><button type="button" class="btn btn-dark" id="okModal">Compris ↗</button></div></dialog>
+  <script>
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', () => { const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open)); menuBtn.textContent=open?'×':'☰'; });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}));
+    document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false')});button.classList.add('active');button.setAttribute('aria-pressed','true');const type=button.dataset.filter;document.querySelectorAll('.vehicle').forEach(card=>card.hidden=!(type==='tous'||card.dataset.type===type));}));
+    const modal=document.getElementById('demoModal');const modalTitle=document.getElementById('modalTitle');const modalText=document.getElementById('modalText');
+    function openDemo(title,message){modalTitle.textContent=title;modalText.textContent=message;modal.showModal();document.body.classList.add('modal-open')}
+    function closeDemo(){modal.close();document.body.classList.remove('modal-open')}
+    document.querySelectorAll('[data-vehicle]').forEach(button=>button.addEventListener('click',()=>openDemo(button.dataset.vehicle,'Cette fiche est un exemple. Dans la version finale, ce bouton pourra ouvrir une page véhicule avec galerie photos, caractéristiques, prix et demande de rendez-vous.')));
+    document.getElementById('contactBtn').addEventListener('click',()=>openDemo('Prendre contact avec Belgocar','Cette zone est une simulation pour le designer. Le formulaire ou le lien WhatsApp pourra être branché lors du développement final.'));
+    document.getElementById('closeModal').addEventListener('click',closeDemo);document.getElementById('okModal').addEventListener('click',closeDemo);modal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
+    const seen=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');seen.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>seen.observe(el));
+  </script>
+</body>
+</html>
