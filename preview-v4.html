@@ -32,6 +32,109 @@
 @media (max-width:1180px){.nav{gap:24px}.brand img{width:220px}.hero-main{grid-template-columns:46% 54%}.services-row{grid-template-columns:repeat(2,minmax(0,1fr))}.mid-grid,.reviews{grid-template-columns:1fr}.reviews{gap:14px}.rating-box{align-items:flex-start;text-align:left}}
 @media (max-width:860px){html{scroll-padding-top:70px}.topbar .inner{min-height:70px}.nav,.top-actions .top-phone,.top-actions .btn{display:none}.menu-btn{display:flex;margin-left:auto}.brand img{width:178px}.mobile-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid #eceef2;border-bottom:1px solid #eceef2;box-shadow:0 16px 34px rgba(16,17,20,.08);padding:14px 20px 20px}.mobile-nav.open{display:block}.mobile-nav a{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #eff2f5;font-size:15px;font-weight:700}.mobile-nav .btn{display:flex;margin-top:14px}.hero-main{grid-template-columns:1fr;min-height:0}.hero-copy{padding:30px 20px 16px;background:linear-gradient(180deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 65%,rgba(255,255,255,.70) 84%,rgba(255,255,255,.0) 100%)}.hero-visual{min-height:245px;order:-1}.hero h1{font-size:44px}.hero p{font-size:14px}.hero-features{grid-template-columns:1fr}.hero-feature+.hero-feature{border-left:0;border-top:1px solid #eceef2}.services-row{grid-template-columns:1fr}.featured{grid-template-columns:1fr}.vehicle-carousel{grid-auto-columns:82%}.mid-grid{grid-template-columns:1fr}.reviews{grid-template-columns:1fr}.testimonial-box{grid-template-columns:minmax(0,1fr)}.testimonial-box .arrowbtn{display:none}.contact-inner{grid-template-columns:1fr}.footer .row{display:block}.footer-links{justify-content:flex-start;margin-top:12px}}
 @media (max-width:560px){.wrap{padding-inline:14px}.hero-shell{border-radius:0 0 22px 22px}.hero h1{font-size:39px}.hero-btns{gap:10px}.btn{min-height:48px;padding:0 18px;font-size:13px}.service-card{padding:16px 16px}.service-card h3{font-size:15px}.feature-intro{padding:22px 18px}.vehicle-card .info{padding:12px 13px 14px}.contact-inner{padding:22px 18px}.topbar .inner{gap:16px}.mobile-actions{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid #eceef2;box-shadow:0 -8px 25px rgba(16,17,20,.08)}.mobile-actions a{min-height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid #eceef2;background:#fff}.mobile-actions a:last-child{background:var(--red2);border-color:var(--red2);color:#fff}.footer{padding-bottom:84px}}
+
+/* V4.1 : mobile plus court, logos défilants, photographie recentrée */
+.hero-main{grid-template-columns:minmax(0,41%) minmax(0,59%);min-height:355px}
+.hero-copy{padding:32px 24px 26px 34px}
+.hero h1{font-size:clamp(40px,3.65vw,60px);line-height:.99}
+.hero p{font-size:13px;margin-top:15px}
+.hero-btns{margin-top:20px}
+.hero-visual{background-position:center center;background-size:contain;background-color:#e7e8e9}
+.hero-visual:before{background:transparent}
+.hero-shell{border-radius:0 0 22px 22px}
+.brands-ticker{background:#fff;border:1px solid #eceef2;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;padding:13px 0 17px}
+.brands-heading{display:flex;justify-content:center;align-items:center;gap:14px;color:#717780;font-size:10px;font-weight:800;letter-spacing:.18em;margin:2px 22px 12px;white-space:nowrap}
+.brand-rule{height:1px;width:clamp(24px,8vw,100px);background:#e6e9ed}
+.brands-window{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent 0%,black 4%,black 96%,transparent 100%)}
+.brands-track{display:flex;gap:40px;align-items:center;width:max-content;animation:marquee-logos 43s linear infinite;will-change:transform}
+.brands-set{display:flex;align-items:center;gap:40px;flex-shrink:0}
+.brand-logo{display:flex;align-items:center;justify-content:center;gap:9px;min-width:max-content;white-space:nowrap;opacity:.82}
+.brand-logo img{display:block;width:29px;height:29px;object-fit:contain;filter:grayscale(1)}
+.brand-logo strong{color:#343b45;font-size:12px;letter-spacing:-.015em;font-weight:800}
+.brands-window:hover .brands-track{animation-play-state:paused}
+@keyframes marquee-logos{to{transform:translateX(calc(-50% - 20px))}}
+.atelier-box img{object-position:center center}
+.why-kicker{color:#8e949d;font-size:10px;font-weight:800;letter-spacing:.14em;margin-bottom:9px}
+.why-box .reasons{gap:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+.why-box .reason{background:transparent;border:0;border-top:1px solid #edf0f4;border-radius:0;padding:14px 10px 12px 0}
+.why-box .reason h3{margin-top:0;font-size:13px;font-weight:800;line-height:1.25}
+.why-box .reason p{font-size:11.5px;line-height:1.5}
+@media(max-width:1180px){
+ .hero-visual{background-size:contain;background-position:center}
+ .why-box .reasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:860px){
+ .hero-main{grid-template-columns:1fr;min-height:unset;display:flex;flex-direction:column}
+ .hero-visual{order:-1;min-height:220px;aspect-ratio:838/340;background-size:contain;background-position:center;background-color:#e7e8e9}
+ .hero-copy{padding:22px 20px 24px;background:#fff}
+ .hero h1{font-size:clamp(36px,6vw,47px);margin-top:9px}
+ .hero p{font-size:12px;line-height:1.5;margin-top:12px}
+ .hero-btns{margin-top:16px}
+ .brands-ticker{margin-top:11px}
+ .featured{grid-template-columns:1fr;margin-top:12px}
+ .mid-grid{margin-top:12px}
+ .reviews{margin-top:12px;gap:10px}
+ .feature-intro{padding:18px 20px}
+ .feature-intro p{font-size:12px;margin-bottom:12px}
+ .section-title{margin-bottom:10px}
+ .vehicle-card .photo{aspect-ratio:2.05}
+ .atelier-box{min-height:190px}
+ .atelier-box img{object-position:center center}
+ .why-box{padding:16px 18px}
+ .why-box h2{margin-bottom:12px}
+ .review-source-link{margin-top:4px}
+ .contact-strip{margin-top:12px}
+}
+@media(max-width:560px){
+ .wrap{padding-inline:13px}
+ .hero-visual{min-height:0;height:auto;aspect-ratio:838/340;background-size:100% auto;background-position:center center}
+ .hero-copy{padding:16px 17px 20px}
+ .hero h1{font-size:clamp(34px,8vw,42px);margin-top:8px;line-height:.98}
+ .hero p{font-size:11px;line-height:1.43;margin-top:10px}
+ .hero-btns{gap:8px;margin-top:13px}
+ .hero-btns .btn{min-height:42px;padding:0 15px;font-size:11px}
+ .hero-shell{border-radius:0 0 18px 18px}
+ .brands-ticker{padding:10px 0 12px}
+ .brands-heading{font-size:9px;margin-bottom:9px}
+ .brand-logo{gap:7px}
+ .brand-logo img{width:23px;height:23px}
+ .brand-logo strong{font-size:11px}
+ .brands-track,.brands-set{gap:27px}
+ .feature-intro{padding:16px 16px}
+ .feature-intro .eyebrow{font-size:10px}
+ .section-title{font-size:22px}
+ .feature-intro p{font-size:11.5px;line-height:1.5}
+ .feature-intro .btn{min-height:39px;padding:0 14px;font-size:11px}
+ .vehicle-carousel{grid-auto-columns:74%;gap:9px}
+ .vehicle-card .photo{aspect-ratio:2.1}
+ .vehicle-card h3{font-size:13px}
+ .vehicle-card .sub{font-size:11px}
+ .vehicle-card .meta{font-size:10px;gap:8px}
+ .vehicle-card .price{font-size:16px}
+ .mid-grid{gap:10px}
+ .atelier-box{min-height:0;height:auto;aspect-ratio:784/209}
+ .atelier-box img{object-position:center center}
+ .why-box .reasons{grid-template-columns:1fr 1fr;gap:0 12px}
+ .why-box .reason{padding:11px 0}
+ .why-box .reason h3{font-size:12px}
+ .why-box .reason p{font-size:10px}
+ .reviews{gap:9px}
+ .reviews-title{padding:16px 18px}
+ .reviews-title h2{font-size:23px}
+ .rating-box{padding:14px 18px;min-height:0}
+ .testimonial-box{padding:15px 18px;gap:10px}
+ .avatar{height:37px;width:37px;border-width:2px}
+ .avatar-stack{margin-bottom:10px}
+ .testimonial-box .quote{font-size:12px;line-height:1.5}
+ .testimonial-box .name{font-size:11px;margin-top:7px}
+ .dots{margin-top:9px}
+ .contact-inner{padding:18px}
+ .contact-inner h2{font-size:17px}
+ .contact-inner p{font-size:12px}
+ .contact-info{gap:9px;font-size:11px;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.brands-track{animation:none}.brands-window{overflow-x:auto;mask-image:none}}
+
 </style>
 <style>.example-note{display:block;font-size:11px;line-height:1.5;color:#8c919b;margin-top:15px}.review-source-link{display:inline-block;color:#ef1e26;font-weight:700;font-size:12px;margin-top:7px}</style></head>
 <body>
@@ -41,7 +144,7 @@
     <nav class="nav" aria-label="Navigation principale">
       <a class="active" href="#accueil">Accueil</a>
       <a href="#vehicules">Nos véhicules</a>
-      <a href="#services">Nos services</a>
+      <a href="#apropos">Notre expertise</a>
       <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -54,7 +157,7 @@
   <nav class="mobile-nav wrap" id="mobileNav">
     <a href="#accueil">Accueil <span>→</span></a>
     <a href="#vehicules">Nos véhicules <span>→</span></a>
-    <a href="#services">Nos services <span>→</span></a>
+    <a href="#apropos">Nos services <span>→</span></a>
     <a href="#apropos">À propos <span>→</span></a>
     <a href="#contact">Contact <span>→</span></a>
     <a class="btn small" href="#contact">Rendez-vous →</a>
@@ -75,19 +178,44 @@
         </div>
         <div class="hero-visual" aria-label="Façade Belgocar avec SUV devant le showroom"></div>
       </section>
-      <div class="hero-features">
-        <div class="hero-feature"><svg viewBox="0 0 32 32"><path d="m8 16 4-8h8l4 8-8 8-8-8zM8 16h16M12 8l4 16 4-16"/></svg><span>Véhicules sélectionnés<br>et garantis</span></div>
-        <div class="hero-feature"><svg viewBox="0 0 32 32"><circle cx="10" cy="11" r="4.5"/><circle cx="22" cy="11" r="4.5"/><path d="M3 27c0-5 3-8 7-8s7 3 7 8M15 27c0-5 3-8 7-8s7 3 7 8"/></svg><span>Un service professionnel<br>et humain</span></div>
-        <div class="hero-feature"><svg viewBox="0 0 32 32"><path d="m16 4 10 5v7c0 6-4.3 9.6-10 12-5.7-2.4-10-6-10-12V9zM11.5 16.5l3 3 6-6"/></svg><span>Transparence<br>et confiance</span></div>
-      </div>
+      
     </div>
 
-    <section class="services-row section-space" id="services" aria-label="Services Belgocar">
-      <article class="service-card"><svg viewBox="0 0 32 32"><path d="M5 19h22v6H5zM8 19l2-6h12l2 6M10 25h0M22 25h0"/></svg><div><h3>Vente de véhicules</h3><p>Une sélection rigoureuse de véhicules récents et garantis.</p></div><span class="go">→</span></article>
-      <article class="service-card"><svg viewBox="0 0 32 32"><path d="M19 6 8 17l-1 8 8-1L26 13M18 7l7 7"/></svg><div><h3>Entretien & réparation</h3><p>Un atelier équipé et une équipe passionnée à votre service.</p></div><span class="go">→</span></article>
-      <article class="service-card"><svg viewBox="0 0 32 32"><path d="M23 8a10 10 0 1 0 3 7.3M23 8v7h7"/></svg><div><h3>Reprise de votre véhicule</h3><p>Une estimation rapide, juste et sans engagement.</p></div><span class="go">→</span></article>
-      <article class="service-card"><svg viewBox="0 0 32 32"><path d="M7 13h18M10 9h12M9 13v10h14V13M12 18h8M12 22h6"/></svg><div><h3>Solutions de financement</h3><p>Des formules flexibles et adaptées à votre projet.</p></div><span class="go">→</span></article>
-    </section>
+    <section class="brands-ticker section-space" aria-label="Marques automobiles">
+  <div class="brands-heading"><span class="brand-rule"></span><span>L'UNIVERS MULTIMARQUES</span><span class="brand-rule"></span></div>
+  <div class="brands-window">
+    <div class="brands-track">
+      <div class="brands-set"><span class="brand-logo"><img src="https://cdn.simpleicons.org/audi/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Audi</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/bmw/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>BMW</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/mercedesbenz/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Mercedes-Benz</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volkswagen/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volkswagen</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/peugeot/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Peugeot</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/renault/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Renault</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/toyota/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Toyota</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volvo/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volvo</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/hyundai/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Hyundai</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/ford/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Ford</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/skoda/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Škoda</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/opel/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Opel</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/seat/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>SEAT</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/porsche/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Porsche</strong></span></div>
+      <div class="brands-set" aria-hidden="true"><span class="brand-logo"><img src="https://cdn.simpleicons.org/audi/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Audi</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/bmw/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>BMW</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/mercedesbenz/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Mercedes-Benz</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volkswagen/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volkswagen</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/peugeot/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Peugeot</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/renault/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Renault</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/toyota/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Toyota</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/volvo/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Volvo</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/hyundai/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Hyundai</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/ford/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Ford</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/skoda/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Škoda</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/opel/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Opel</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/seat/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>SEAT</strong></span>
+<span class="brand-logo"><img src="https://cdn.simpleicons.org/porsche/272a30" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Porsche</strong></span></div>
+    </div>
+  </div>
+</section>
 
     <section class="featured section-space" id="vehicules">
       <div class="feature-intro">
@@ -106,17 +234,18 @@
 
     <section class="mid-grid section-space" id="apropos">
       <article class="atelier-box">
-        <img src="assets/v4-atelier.webp" alt="Atelier Belgocar et équipe au travail">
+        <img src="assets/v4-atelier.webp" alt="L’atelier de Belgocar, une expertise automobile" loading="lazy">
       </article>
-      <aside class="why-box">
-        <h2>Pourquoi <span class="red">choisir Belgocar ?</span></h2>
-        <div class="reasons">
-          <div class="reason"><svg viewBox="0 0 32 32"><path d="M14 4h4l1 3 3 1 2-2 3 3-2 2 1 3 3 1v4l-3 1-1 3 2 2-3 3-2-2-3 1-1 3h-4l-1-3-3-1-2 2-3-3 2-2-1-3-3-1v-4l3-1 1-3-2-2 3-3 2 2 3-1zM16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg><h3>Une expertise reconnue</h3><p>Un vrai savoir-faire dans l'automobile et un atelier à votre service.</p></div>
-          <div class="reason"><svg viewBox="0 0 32 32"><path d="M6 18h20v6H6zM9 18l2-6h10l2 6M10 24h0M22 24h0"/></svg><h3>Des véhicules de qualité</h3><p>Des occasions rigoureusement sélectionnées et garanties.</p></div>
-          <div class="reason"><svg viewBox="0 0 32 32"><circle cx="11" cy="11" r="4.5"/><path d="M3 26c0-5 3.5-8 8-8s8 3 8 8M23 10l3 3-6 6-3 1 1-3z"/></svg><h3>Un accompagnement personnalisé</h3><p>Une équipe à votre écoute, du premier contact à la livraison.</p></div>
-          <div class="reason"><svg viewBox="0 0 32 32"><path d="m16 4 10 5v7c0 6-4.3 9.6-10 12-5.7-2.4-10-6-10-12V9zM11.5 16.5l3 3 6-6"/></svg><h3>Proximité et transparence</h3><p>Un service honnête, clair et sans mauvaise surprise.</p></div>
-        </div>
-      </aside>
+      <aside class="why-box" id="expertise">
+  <div class="why-kicker">BELGOCAR · LE SAVOIR-FAIRE</div>
+  <h2>Pourquoi <span class="red">choisir Belgocar ?</span></h2>
+  <div class="reasons">
+    <div class="reason"><h3>01 / Expertise automobile</h3><p>Vente, mécanique et accompagnement auprès d'une même équipe.</p></div>
+    <div class="reason"><h3>02 / Qualité des véhicules</h3><p>Une sélection multimarques pensée pour des besoins réels.</p></div>
+    <div class="reason"><h3>03 / Échange direct</h3><p>Des réponses claires, un interlocuteur facilement joignable.</p></div>
+    <div class="reason"><h3>04 / Suivi après l'achat</h3><p>Une relation qui continue bien après la remise des clés.</p></div>
+  </div>
+</aside>
     </section>
 
     <section class="reviews section-space" id="avis">
@@ -167,7 +296,7 @@
 <footer class="footer">
   <div class="wrap row">
     <a class="footer-logo" href="#accueil"><img src="assets/v4-logo.webp" alt="Belgocar"></a>
-    <div class="footer-links"><a href="#vehicules">Nos véhicules</a><a href="#services">Nos services</a><a href="#contact">Contact</a><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">AutoScout24</a></div>
+    <div class="footer-links"><a href="#vehicules">Nos véhicules</a><a href="#apropos">Notre expertise</a><a href="#contact">Contact</a><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">AutoScout24</a></div>
   </div>
 </footer>
 <div class="mobile-actions"><a href="tel:+32470934501">Appeler</a><a href="https://www.autoscout24.be/fr/professional/belgocar" target="_blank" rel="noopener noreferrer">Voir les voitures</a></div>
